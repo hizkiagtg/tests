@@ -1,6 +1,6 @@
 # REPOSITORI TUGAS KELOMPOK MID-TERM A09
 
-### Nama anggota:
+## Nama anggota:
 
 1. Fauziah Putri Fajrianti - 2106707435
 2. Hizkia Sebastian Ginting - 2106750881
@@ -11,7 +11,7 @@
 7. Syadza Nayla Arrana Desvianto - 2106634055
 
 
-### Link App Heroku
+## Link App Heroku
 Link: https://wazzt.herokuapp.com/
 
 ## Penjelasan Aplikasi
@@ -26,7 +26,7 @@ Banyaknya jumlah masyarakat dan sampah yang dihasilkan berdampak pada kesejahter
 
 Maka dari itu, sebagai bentuk aksi untuk ikut berkontribusi dalam mencapai Environment & Climate Sustainability, kami membuat aplikasi Wazzt. Aplikasi ini bertujuan untuk mengatasi permasalahan sampah di Indonesia sekaligus memotivasi warga untuk memilah sampah dengan menyediakan sistem point reward & leaderboard.
 
-### Modul yang diimplementasikan
+## Modul yang diimplementasikan
 1. Login/Logout (bikin user / bank sampah baru)
     - Login: username, email, password
     - Register user biasa: nama, username, umur, jenis kelamin, email, password, domisili (kota)
@@ -54,7 +54,7 @@ Maka dari itu, sebagai bentuk aksi untuk ikut berkontribusi dalam mencapai Envir
     - Voucher Anda (daftar voucher)
     - Voucher dummy (beli voucher ini?)
 
-### Role atau peran pengguna beserta deskripsinya
+## Role atau peran pengguna beserta deskripsinya
 1. User Non-Login:
     - About us
     - Login/Sign up
