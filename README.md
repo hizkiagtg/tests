@@ -15,9 +15,9 @@
 Link: https://wazzt.herokuapp.com/
 
 ## Penjelasan Aplikasi
-###Judul Aplikasi:	
+### Judul Aplikasi:	
 Wazzt
-###Topics: 	
+### Topics: 	
 Environment & Climate Sustainability
 
 Forum The Group of Twenty (G20) merupakan suatu himpunan antara 20 negara dunia yang aktif membahas isu-isu penting di dunia. G20 memiliki kelompok kerja yang fokus pada bidang Environment & Climate Sustainability. Kelompok ini bertujuan untuk mempercepat transisi energi, ekonomi hijau, dan environmental sustainability. Beberapa misi dari kelompok ini adalah memerangi punahnya keanekaragaman hayati dan meningkatkan kualitas udara.
