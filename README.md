@@ -10,7 +10,7 @@
 6. Laura Glory Evangeline Sihombing - 2106751751 
 
 ### Link App Heroku
-LInk: https://tugas-kelompok-a09.herokuapp.com/
+Link: https://wazzt.herokuapp.com/
 
 ### Penjelasan Aplikasi
 Judul Aplikasi:	Wazzt
