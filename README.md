@@ -52,7 +52,7 @@ Maka dari itu, sebagai bentuk aksi untuk ikut berkontribusi dalam mencapai Envir
 7. Tukar poin
     - Poin Anda -> berkurang
     - Voucher Anda (daftar voucher)
-    - Voucher dummy (beli voucher ini?)
+    - List Voucher
 
 ## Role atau peran pengguna beserta deskripsinya
 1. User Non-Login:
