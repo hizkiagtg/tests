@@ -8,14 +8,15 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 import json
 
-from django.views.decorators.csrf import csrf_exempt
-
 from .forms import *
 
 # Create your views here.
 
 def main(request):
     return render(request, "main.html")
+
+def signup(request):
+    return render(request, "signup.html")
 
 # Handle sign up form and create User with a spesific role (group).
 def regular_signup(request):
@@ -24,37 +25,48 @@ def regular_signup(request):
     
     if request.method == "POST":
         form = RegularSignUpForm(request.POST)
-        username_exists = User.objects.filter(username=request.POST["username"]).exists()
-        email_exists = User.objects.filter(email=request.POST["email"]).exists()
+
+        username_exists = User.objects.filter(username=request.POST.get("username")).exists()
+        email_exists = User.objects.filter(email=request.POST.get("email")).exists()
+
+        data = {}
     
         if username_exists:
-            messages.error(request, "Username already exists")
+            data['success'] = False
+            data['warning'] = "Username has already been used"
+
         elif email_exists:
-            messages.error(request, "Email already exists")
+            data['success'] = False
+            data['warning'] =  "Email has already been used"
+
         else:
             if form.is_valid():
+                data['success'] = True
                 user = form.save(commit=False)
                 user.username = user.username.lower()
                 user.is_regular = True
                 user.save()
-                return redirect("accounts:main")
+
             else:
-                for msg in form.error_messages:
-                    messages.error(request, f"{form.error_messages[msg]}")
+                data['error'] = form.errors
+                data['success'] = False
+                context = {"form": form}
+
+        response = HttpResponse(json.dumps(data), content_type='application/json', status=200)
+        return response        
 
     form = RegularSignUpForm()
     context = {"form": form}
 
-    return render(request, 'signup_reg.html', context)
+    return render(request, 'signup.html', context)
 
-@csrf_exempt
 def bank_signup(request):
     if request.user.is_authenticated:
         return redirect("accounts:main")
     
     if request.method == "POST" and is_ajax:
         form = BankSignUpForm(request.POST)
-        name_exists = User.objects.filter(name=request.POST.get("name")).exists()
+        name_exists = User.objects.filter(is_bank=True, name=request.POST.get("name")).exists()
         email_exists = User.objects.filter(email=request.POST.get("email")).exists()
         data = {}
     
@@ -62,36 +74,29 @@ def bank_signup(request):
             data['success'] = False
             data['warning'] = "Institute name has already been registered"
             
-            # return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-        
         elif email_exists:
             data['success'] = False
             data['warning'] =  "Email has already been used"
-            # return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-        
+            
         else:
             if form.is_valid():
                 data['success'] = True
                 user = form.save(commit=False)
                 user.is_bank = True
                 user.save()
-                # return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-            
+                
             else:
                 data['error'] = form.errors
                 data['success'] = False
                 context = {"form": form}
-                # return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-        
-        # result = JsonResponse(data.json())
+                
         response = HttpResponse(json.dumps(data), content_type='application/json', status=200)
-        response.status_code=200
         return response
 
     form = BankSignUpForm()
     context = {"form": form}
 
-    return render(request, "signup_bank.html", context)
+    return render(request, "signup.html", context)
 
 def login_user(request):
     # Excecuted when User submit the form.
