@@ -37,7 +37,7 @@ def regular_signup(request):
 
         elif email_exists:
             data['success'] = False
-            data['warning'] =  "Email has already been used"
+            data['warning'] = "Email has already been used"
 
         else:
             if form.is_valid():
