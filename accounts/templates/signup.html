@@ -24,10 +24,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script> -->
     
-    <style> 
-        .inp {
-            font-size: 13px;
-            font-weight: 400;
+    <style>
+        input {
+            font-size: 14px;
+        }
+    
+        .form-floating>.form-control,
+        .form-floating>.form-control-plaintext {
+            padding: 0rem 0.75rem;
+        }
+    
+        .form-floating>.form-control,
+        .form-floating>.form-control-plaintext,
+        .form-floating>.form-select {
+            height: calc(3rem + 2px);
+            line-height: 1;
+        }
+    
+        .form-floating>label {
+            padding: 0.75rem 0.75rem;
         }
     </style>
 
@@ -185,30 +200,30 @@
                         onclick="document.getElementById('reg-form').reset();"></button>
                 </div>
     
-                <div class="modal-body mt-0 text-muted" style="font-size: 14px; font-weight: 500">
+                <div class="modal-body mt-0 text-muted" style="font-size: 13px; font-weight: 500">
                      
                     <form name="reg-form" class="reg-form" method="POST" id="reg-form">
                         {% csrf_token %}
                             <div class="col-md-12 mb-3">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="inputName2" placeholder="Nama Lengkap" name= "inputName2"   
-                                        autocomplete="off" required>
-                                    <label for="inputName2">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="inputName2" placeholder="Nama Lengkap" name= "name"   
+                                    style="font-size: 14px"  autocomplete="off" required>
+                                    <label for="name">Nama Lengkap</label>
                                 </div>
                             </div>
                     
                             <div class="col-md-12 mb-3">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" name="inputEmail2" id="inputEmail2" placeholder="Email" required>   
-                                    <label for="inputEmail2">Email</label>
+                                    <input type="email" class="form-control" name="email" id="inputEmail2" placeholder="Email" required>   
+                                    <label for="email">Email</label>
                                 </div>
                             </div>
                         
                             <div class="col-md-12 mb-3">
                                 <div class="form-floating">
-                                    <input type="text" name="inputUsername2" id="inputUsername2" class="form-control" placeholder="Username"
+                                    <input type="text" name="username" id="inputUsername2" class="form-control" placeholder="Username"
                                         required>
-                                    <label for="inputUsername2">Username</label>
+                                    <label for="username">Username</label>
 
                                 </div>
                             </div>
@@ -217,9 +232,9 @@
                             <div class="col-md-6 mb-3">
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="password" name="inputPassword12" id="inputPassword12" class="form-control input"
+                                        <input type="password" name="password1" id="inputPassword12" class="form-control input"
                                             placeholder="Password" required>
-                                        <label for="inputPassword12">Password</label>
+                                        <label for="password1">Password</label>
                                     </div>
                                 </div>
                             </div>
@@ -227,36 +242,54 @@
                             <div class="col-md-6 mb-3">
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input type="password" name="inputPassword22" id="inputPassword22" class="form-control"
+                                        <input type="password" name="password2" id="inputPassword22" class="form-control"
                                             placeholder="Konfirmasi Password" required>
-                                        <label for="inputPassword22">Konfirmasi Password</label>
+                                        <label for="password2">Konfirmasi Password</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                 
                         <div class="col-md-12">
-                            <label for="age"></label>
-                            <input type="text" name="age" id="inputAge2" class="form-control input" placeholder="Umur"><br>
+                            <div class="form-floating">
+                                <input type="number" name="age" id="inputAge2" class="form-control input" placeholder="Umur" 
+                            min="13" max="100" onchange="if(value<13) value=13; if(value>100) value=100;"><br>
+                            <label for="age">Umur</label>
+                            </div>
+                        </div>
+                        <div class="d-md-flex justify-content-start align-items-center ml-3 py-2">
+                            <div class="col-md-12 mb-3">
+                                <label class="text-dark mx-2 mb-1 me-3" for="gender">Jenis Kelamin:</label>
+                        
+                                <div class="form-check form-check-inline mb-0 me-3">
+                                    <input class="form-check-input" type="radio" name="gender" id="pria" value="Pria">
+                                    <label class="form-check-label" for="pria">Pria</label>
+                                </div>
+                        
+                                <div class="form-check form-check-inline mb-0 me-3">
+                                    <input class="form-check-input" type="radio" name="gender" id="wanita" value="Wanita">
+                                    <label class="form-check-label" for="wanita">Wanita</label> <br>
+                                </div>
+
+                                <div class="form-check form-check-inline mb-0 me-3">
+                                    <input class="form-check-input" type="radio" name="gender" id="tidak" value="Tidak ingin memberi tahu">
+                                    <label class="form-check-label" for="tidak">Tidak ingin memberi tahu</label> <br>
+                                </div>
+
+                            </div>
                         </div>
                 
                         <div class="col-md-12">
-                            <label for="gender">Jenis Kelamin:</label><br>
-                            <input type="radio" name="gender" id="pria" value="Pria">
-                            <label for="pria">Pria</label>
-                            <input type="radio" name="gender" id="wanita" value="Wanita">
-                            <label for="wanita">Wanita</label> <br>
-                        </div>
-                
-                        <div class="col-md-12">
-                            <label for="city"></label>
-                            <input type="text" name="city" id="inputCity2" class="form-control input" placeholder="Domisili (Kota)"><br>
+                            <div class="form-floating">
+                                <input type="text" name="city" id="inputCity2" class="form-control input" placeholder="Domisili (Kota)"><br>
+                                <label for="city">Domisili (Kota)</label>
+                            </div>
                         </div>
                         <p id="error" style="color: red"></p>
                     </form>
                 
                     <button class="btn btn-md btn-primary" id="reg-button" type="submit" onclick="regularSignUp();">Sign Up</button>
-                    <a class="already" href="#"> Sudah punya akun? Login di sini.</a></form>
+                    <a class="already" href="../login/"> Sudah punya akun? Login di sini.</a></form>
                 </div>
             </div>
         </div>
