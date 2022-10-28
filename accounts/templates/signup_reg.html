@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    {% block meta %}
+    {% endblock meta %}
+    <style>
+        .input {
+            font-size: 12px;
+            font-weight: 400;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).on('submit', '#signup-form', function(e){
+          e.preventDefault();
+          
+          var signup_form_id = $('#signup-form')
+      
+          $.ajax({
+              type:'POST',
+              url:"{% url 'accounts:regular_signup' %}",
+              data:signup_form_id.serialize(),
+              dataType:"json",
+              header: {'X-CSRFToken': '{% csrf_token %}'},
+              success: function(response){
+                var message
+                // var success = response['success']
+                if (response['success']){
+                    var message = "Anda berhasil terdaftar! Silahkan login.";
+                }
+                else {
+                    if (response['error']!=null) {
+                        for(var msg in response['error']) {
+                            var row = `
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <span class="alert-text"> {{ msg }} </span>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>`;
+                        } $('#allAlerts').append(row);
+                    }
+                    else {
+                        $('#allAlerts').append(response[warning]);
+                    }
+
+                //   alert("Pendaftaran akun gagal! Silakan coba lagi.");
+                //   for(var msg in response['error']) {
+                //     var txt = JSON.stringify(response['error'][msg]);
+                //     document.getElementById("error").innerHTML = txt.replace(/[&\/\\#,\]+()$~%['":*?<>{}]/g, '');
+                //   }
+                }
+              },
+          });
+        });
+      </script>
+      
+</head>
+
+<body class="m-body">
+    {% block content %}
+    <div class="login vh-100 d-flex justify-content-center align-items-center">
+        <div class="card text-center mt-3 mb-3 mx-3 shadow" style="width: 60rem">
+            <h5 class="card-title mt-4 mb-0 fw-bold mr-5"> Create Account </h5>
+            <div class="card-body p-4">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="table-responsive">
+                        <table class="table table-borderless text-start vertical-align">
+                            <form class="form-signin" method="post" id="signup-form">{% csrf_token %}
+                                <div class="col-md-12">
+                                    <label for="name"></label>
+                                    <input type="text" name="name" id="inputName" class="form-control input"
+                                        placeholder="Nama Lengkap" autocomplete="off" required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="email"></label>
+                                    <input type="email" name="email" id="inputEmail" class="form-control input"
+                                        placeholder="Email" required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="username"></label>
+                                    <input type="text" name="username" id="inputUsername" class="form-control input"
+                                        placeholder="Username" required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="password1"></label>
+                                    <input type="password" name="password1" id="inputPassword1"
+                                        class="form-control input" placeholder="Password" required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="password2"></label>
+                                    <input type="password" name="password2" id="inputPassword2"
+                                        class="form-control input" placeholder="Konfirmasi Password" required>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="age"></label>
+                                    <input type="text" name="age" id="inputAge" class="form-control input"
+                                        placeholder="Umur"><br>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="gender">Jenis Kelamin:</label><br>
+                                    <input type="radio" name="gender" id="pria" value="Pria">
+                                    <label for="pria">Pria</label>
+                                    <input type="radio" name="gender" id="wanita" value="Wanita">
+                                    <label for="wanita">Wanita</label> <br>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="city"></label>
+                                    <input type="text" name="city" id="inputCity" class="form-control input"
+                                        placeholder="Domisili (Kota)"><br>
+                                </div>
+                                <p id="error" style="color: red"></p>
+
+                                <button class="btn btn-md btn-primary" id="reg-button" type="submit">Register</button>
+
+                            </form>
+
+                        </table>
+                    </div>
+
+                    <input class="btn login_btn mt-2 mb-3"
+                        style="background: #7f52a9; color:white; font-size: 15px; border-radius: 20px; width: 10rem"
+                        onmouseover="this.style.backgroundColor='#555'"
+                        onmouseout="this.style.backgroundColor='#7f52a9'" type="submit" name="submit" value="Daftar" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-md-3 mx-auto" id= "allAlerts" style="width: 95%">
+    </div>
+
+    <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+    
+                <div class="modal-header">
+                    <h4 class="modal-title mt-3 mb-2 fw-bold subtitle text-dark w-100 text-center"> Create new task!</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="document.getElementById('allAlerts').empty();"></button>
+                </div>
+    
+                <div class="row row-cols-md-3 mx-auto" id="allAlerts" style="width: 95%">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    {% endblock content %}
+</body>
+
+</html>
