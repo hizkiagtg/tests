@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'example_app',
     'buat_sumbangan',
-    'accounts',
-    'forum',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +68,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+             'libraries' : {
+                'staticfiles': 'django.templatetags.static', 
+            }
+
         },
     },
 ]
@@ -94,8 +96,6 @@ if PRODUCTION:
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
-
-AUTH_USER_MODEL="accounts.User"
 
 AUTH_PASSWORD_VALIDATORS = [
     {

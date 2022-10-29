@@ -20,6 +20,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('example_app.urls')),
     path('sumbang/', include('buat_sumbangan.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('', include('forum.urls')),
 ]

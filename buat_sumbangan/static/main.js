@@ -1,8 +1,5 @@
-$(document).on('submit', '#post-form',function(e){
+$(document).on('submit','#post-form',function(e){
     e.preventDefault();
-
-    //links = window.location.href.split('/')
-   // id = links[links.length-1]
     $.ajax({
         type:'POST',
         url:"{% url 'buat_sumbangan:add_donasi' %}",
