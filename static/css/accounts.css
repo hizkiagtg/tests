@@ -1,0 +1,58 @@
+.menu-bar{
+    background-image: linear-gradient(to right, rgb(66, 103, 145), rgb(234, 144, 183));
+    /* background-color: #654321;
+    background-image: linear-gradient(180deg, rgba(#d38312, .15), rgba(#a83279, 0)); */
+}
+
+h1 {
+    color: white;
+    text-align: center; 
+    text-shadow: 2px 2px 6px #281f46;
+}
+
+.body2 {
+    background: rgb(174, 238, 193);
+    background: radial-gradient(circle, #92ac9b 0%, #bacec1 50%, #f6f4e8 100%);
+}
+
+.body1 {
+    background: rgb(237,216,225);
+    background: linear-gradient(-5deg, #f6f4e8 0%, #bacec1 60%, #92ac9b 100%);
+    background-attachment: fixed;
+}
+
+.title-input {
+    color:rgb(50, 50, 50);
+    /* font-weight: bold; */
+}
+
+.login_btn {
+background-color: #423a5d;
+transition-duration: 0.4s;
+}
+
+.login_btn:hover {
+background-color: #4CAF50; /* Green */
+color: white;
+}
+
+.btn-logout {
+    color: #fff;
+    background: white;
+    border: white;
+    border-radius: 10px;
+    font-size: 12px;
+    padding: 10px 20px;
+    width: 10px;
+}
+
+/* Code source: https://ordinarycoders.com/blog/article/codepen-bootstrap-card-hovers */
+
+/* .card{
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+}
+
+.card:hover{
+    transform: scale(1.03);
+} */

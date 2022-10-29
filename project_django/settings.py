@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'example_app',
     'user_profile',
+    'accounts',
+    'forum',
 ]
 
 MIDDLEWARE = [
@@ -92,6 +94,8 @@ if PRODUCTION:
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL="accounts.User"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
