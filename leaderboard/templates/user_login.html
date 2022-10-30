@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Business Frontpage - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../static/style.css" rel="stylesheet" />
+        
+
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="#!">Wazzt</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Forum</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href= "{% url 'leaderboard.html'%}">Leaderboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Tukar Poin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Sumbang Sampah</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Riwayat</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header>
+                <img src="test1.jpg" class="image">
+                <!-- <div class="bg-dark py-5">
+                    <div class="container px-5"> -->
+                    
+                        <div class="row gx-5 justify-content-center">
+                            <div class="col-lg-6">
+                                <div class="centered text-center my-5">
+                                    <h1 class="display-5 fw-bolder text-black mb-2">Wazzt</h1>
+                                    <p class="lead fw-bolder text-black-50 mb-4">Website bank sampah dengan harapan dapat mengatasi permasalahan sampah di Indonesia dengan memotivasi masyarakat untuk memilah sampah.  </p>
+                                    
+                                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                                        <a class="btn bg-black text-white btn-lg px-4 me-sm-3" href="#!">Login</a>
+                                        <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </header>
+        <!-- About Us-->
+        <section class="bg-light"> 
+            <div class="container px-5">
+                <div class="row">
+                    <div class="col">
+                        <div class="my-5">
+                            <h2 class="display-5 fw-bolder text-black mb-2" id ="about">About Us</h2>
+                            <p class="lead text-black-50 mb-4">Permasalahan sampah di Indonesia yang semakin buruk. Data menunjukkan, bahwa setiap tahunnya dihasilkan 2.12 miliar ton sampah, yang 33% darinya tidak diolah dengan baik dan mengganggu lingkungan. Banyak hewan-hewan yang terganggu lingkungan hidupnya karena sampah, yang mengakibatkan kematian bagi hewan-hewan tersebut. Sampah-sampah yang menumpuk pada udara terbuka dan tidak diolah dengan baik menghasilkan gas metana yang merupakan salah satu gas yang dapat menjadi salah satu faktor terjadinya perubahan iklim yang ekstrim sehingga berdampak juga terhadap pemanasan global.</p>
+                            <p class="lead text-black-50 mb-4">Oleh karena itu, Wazzt hadir dengan menyediakan sistem point reward dan leaderboard yang dapat menjadi motivasi masyrakat untuk ikut dalam pengelolaan sampah yang lebih baik.</p>
+                            <h4 class="display-5 fw-bolder text-black mb-2" >Visi & Misi</h4>
+                            <p class="lead text-black-50 mb-4">Visi: </p>
+                            <p class="lead text-black-50 mb-4"> Menjadikan Wazzt sebagai wadah pembelajaran untuk masyarakat yang peduli akan lingkungan dan mewujudkan lingkungan yang bersih dari sampah "</p></p>
+                            <p class="lead text-black-50 mb-4">Misi:</p>
+                            <ol class="lead text-black-50 mb-4">
+                                <li>Meningkatkan peran bank sampah agar bermanfaat bagi masyarakat</li>
+                                <li>Memberdayakan masyarakat dalam kemandirian pengelolaan sampah</li>
+                                <li>Menambah nilai guna dan ekonomi dari sampah</li>
+                              </ol>  
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>         
+                
+        <!-- Daftar Bank Sampah-->
+        <section class="bg-white py-5 border-bottom">
+            <div class="container px-5 my-5">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bolder text-black mb-2">Daftar bank sampah</h2>
+                    <p class="lead mb-0">With our no hassle pricing plans</p>
+                </div>
+                <div class="cards ">
+                    <div class="container col-md-4">
+                    </div>
+                  </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                <script>
+                  $(document).ready(function(){
+                    //nama aplikasi nya bener gak? LEADERBOARD
+                    $.get("/leaderboard/json/", function(data){
+                        for (let i = 0; i< data.length; i++) {
+                          $(".cards").append(`<div class="row no-gutters">
+                        <div class="col-md-4">
+                          <div class=" card">
+                          <h4 class="card-title">${data[i].fields.name}</h4>
+                          <p class="card-text">${data[i].fields.city}</p>
+                          <p class="card-text">${data[i].fields.address}</p>
+                          </div>
+                        </div>
+                      </div>`)
+                        }
+                    });
+                  });
+                </script>
+                <div class="row gx-5 justify-content-center">
+                    <!-- Pricing card free-->
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="card mb-5 mb-xl-0">
+                            <div class="card-body p-5">
+                                <!-- masukin disini script yang diatas buat cek bisa pake tempalet atau gak-->
+                                <div class="small text-uppercase fw-bold text-muted">Free</div>
+                                <div class="mb-3">
+                                    <span class="display-4 fw-bold">$0</span>
+                                    <span class="text-muted">/ mo.</span>
+                                </div>
+                                <ul class="list-unstyled mb-4">
+                                    <li class="mb-2">
+                                        <i class="bi bi-check text-primary"></i>
+                                        <strong>1 users</strong>
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-check text-primary"></i>
+                                        5GB storage
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-check text-primary"></i>
+                                        Unlimited public projects
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="bi bi-check text-primary"></i>
+                                        Community access
+                                    </li>
+                                    <li class="mb-2 text-muted">
+                                        <i class="bi bi-x"></i>
+                                        Unlimited private projects
+                                    </li>
+                                    <li class="mb-2 text-muted">
+                                        <i class="bi bi-x"></i>
+                                        Dedicated support
+                                    </li>
+                                    <li class="mb-2 text-muted">
+                                        <i class="bi bi-x"></i>
+                                        Free linked domain
+                                    </li>
+                                    <li class="text-muted">
+                                        <i class="bi bi-x"></i>
+                                        Monthly status reports
+                                    </li>
+                                </ul>
+                                <div class="d-grid"><a class="btn btn-outline-primary" href="#!">Choose plan</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+    
+        <!-- Footer-->
+        <footer class="py-5 bg-dark" id="contact">
+            <div class="container px-5">
+                <h3>Contact Us</h3>
+                <p>Address : Jalan Jati No.A09, Depok, Jawa Barat, 10101, Indonesia</p>
+                <p>Phone : (021)-7712345</p>
+                <p>Email : pebepea09@wazzt.com</p>
+                <p class="m-0 text-center text-black">Copyright &copy; Wazzt 2022</p>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>

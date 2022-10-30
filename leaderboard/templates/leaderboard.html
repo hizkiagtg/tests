@@ -1,0 +1,68 @@
+<link href="../../static/style.css" rel="stylesheet" />
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+        <a class="navbar-brand" href="#!">Wazzt</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">Forum</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href= "{% url 'leaderboard.html'%}">Leaderboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">Tukar Poin</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">Sumbang Sampah</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">Riwayat</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    function updateTable(){
+        $.get("data_json/", function(data) {
+          // fill table
+          for(var i = 0; i < data.length; i++){
+            var tr = document.createElement("tr");
+            var tdPeringkat = document.createElement("td");
+            tdPeringkat.append(i+1);
+            var tdNama = document.createElement("td");
+            tdNama.append(data[i].fields.name);
+            var tdDomisili = document.createElement("td");
+            tdDomisili.append(data[i].fields.city);
+            var tdBerat = document.createElement("td");
+            tdBerat.append(data[i].fields.weight);
+            
+            tr.append(tdPeringkat);
+            tr.append(tdNama);
+            tr.append(tdDomisili);
+            tr.append(tdBerat);
+            
+            $(".table").append(tr);
+          }
+        });
+      }
+      
+      $(document).ready(function(){
+        updateTable();
+            $('#example').DataTable({
+                order: [[3, 'desc']],
+            });
+        });
+</script>
+
+
+
+<div class="p-4">
+    <h2 class=" text-center display-5 fw-bolder text-black mb-2" >Leaderboard</h2>
+    <input type="text" id="search" placeholder="Enter name..."></input>
+    <table class="table table-bordered">
+      <tr>
+        <th>Peringkat</th>
+        <th>Nama</th>
+        <th>Domisili</th>
+        <th>Total Berat Sampah</th>
+      </tr>
+    </table>
+</div>
