@@ -44,11 +44,11 @@ def regular_signup(request):
     
         elif username_exists:
             data['success'] = False
-            data['warning'] = "Username has already been used"
+            data['warning'] = "Username has already been used."
 
         elif email_exists:
             data['success'] = False
-            data['warning'] = "Email has already been used"
+            data['warning'] = "Email has already been used."
 
         else:
             if form.is_valid():
@@ -83,11 +83,11 @@ def bank_signup(request):
     
         if name_exists:
             data['success'] = False
-            data['warning'] = "Institute name has already been registered"
+            data['warning'] = "Institute name has already been registered."
             
         elif email_exists:
             data['success'] = False
-            data['warning'] =  "Email has already been used"
+            data['warning'] =  "Email has already been used."
             
         else:
             if form.is_valid():

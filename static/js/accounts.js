@@ -24,7 +24,7 @@ function bankSignUp() {
                   }
                   if (req) var newMessage = "All fields are required to be filled."
                   else {
-                      var newMessage = message.replace(/,/g, "\n")
+                    var newMessage = message.replaceAll(".,", ".\n")
                   }
                   alert(newMessage)
               }
@@ -59,7 +59,8 @@ function regularSignUp() {
                   }
                   if (req) var newMessage = "All fields are required to be filled."
                   else {
-                      var newMessage = message.replace(/,/g, "\n")
+                    var newMessage = message.replaceAll(".,", ".\n")
+                    newMessage = newMessage.replace(/@/g, "")
                   }
                   alert(newMessage)
               }

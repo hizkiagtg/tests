@@ -31,7 +31,6 @@ class BankSignUpForm(UserCreationForm):
         fields = (
             "name", 
             "email", 
-            "username", 
             "password1", 
             "password2", 
             "city", 
