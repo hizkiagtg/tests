@@ -21,13 +21,11 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('name', 'email', 'password1', 'password2', 'is_superuser', 'is_staff', 'is_admin', 'gender', 'city', 'address')}
         ),
     )
+    list_display = ('name', 'city', 'email','username','is_admin','is_staff', 'is_regular', 'is_bank', 'gender')
+    search_fields = ('email','username',)
     
-    # fieldsets = (
-    #     (None, {'fields': ('email', 'password')}),
-    #     ('Permissions', {'fields': ('is_staff', 'is_active')}),
-    # )
+admin.site.register(User, CustomUserAdmin) 
 
-admin.site.register(User, CustomUserAdmin)
 
 
 # class RegularUserAdmin(UserAdmin):
