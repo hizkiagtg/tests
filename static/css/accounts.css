@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif!important;;
+}
+body {
+    font-family: 'Poppins',sans-serif!important;;
+}
+
 .menu-bar{
     background-image: linear-gradient(to right, rgb(66, 103, 145), rgb(234, 144, 183));
     /* background-color: #654321;
@@ -46,13 +58,37 @@ color: white;
     width: 10px;
 }
 
+.form-floating>.form-control,
+.form-floating>.form-control-plaintext {
+    padding: 0rem 0.75rem;
+    height: calc(2.5rem + 3px);
+    line-height: 1;
+}
+
+.form-floating>label {
+    padding: 0.75rem 0.75rem;
+    font-size: 12.5px;
+    font-weight: 500;
+}
+
+.form-floating>input {
+    font-size: 13px;
+    font-weight: 450;
+}
+.form-floating>select {
+    font-size: 13px;
+}
+.form-floating>select>option {
+    font-size: 13px;
+}
+
 /* Code source: https://ordinarycoders.com/blog/article/codepen-bootstrap-card-hovers */
 
-/* .card{
+.card{
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
     cursor: pointer;
 }
 
 .card:hover{
     transform: scale(1.03);
-} */
+}
