@@ -35,6 +35,7 @@ class UserManager(BaseUserManager):
 
         return user
 
+
 class User(AbstractUser):
     username = models.CharField(max_length = 20, blank = True, null = True, unique = True)
     email = models.EmailField(verbose_name="email", max_length=50, unique=True)
@@ -56,6 +57,12 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     user = UserManager()
+
+    def add_score(self,score):
+        self.score += score
+
+    def add_weight(self,weight):
+        self.weight += weight
 
     def __str__(self):
         return "{}".format(self.email)
