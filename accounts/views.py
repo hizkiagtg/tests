@@ -7,21 +7,28 @@ from django.core import serializers
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 import json
+import datetime
 
 from .forms import *
 
 # Create your views here.
 
 def main(request):
-    return render(request, "main.html")
+    if (request.user.is_authenticated):
+        return render(request, "main.html")
+    else:
+        return HttpResponseRedirect(reverse('accounts:login'))
+    
 
 def signup(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('accounts:main'))
     return render(request, "signup.html")
 
 # Handle sign up form and create User with a spesific role (group).
 def regular_signup(request):
     if request.user.is_authenticated:
-        return redirect('accounts:main')
+        return HttpResponseRedirect(reverse('accounts:main'))
     
     if request.method == "POST":
         form = RegularSignUpForm(request.POST)
@@ -30,8 +37,12 @@ def regular_signup(request):
         email_exists = User.objects.filter(email=request.POST.get("email")).exists()
 
         data = {}
+
+        if '@' in request.POST.get("username"):
+            data['success'] = False
+            data['warning'] = "Username can not contain @."
     
-        if username_exists:
+        elif username_exists:
             data['success'] = False
             data['warning'] = "Username has already been used"
 
@@ -62,7 +73,7 @@ def regular_signup(request):
 
 def bank_signup(request):
     if request.user.is_authenticated:
-        return redirect("accounts:main")
+        return HttpResponseRedirect(reverse('accounts:main'))
     
     if request.method == "POST" and is_ajax:
         form = BankSignUpForm(request.POST)
@@ -100,20 +111,32 @@ def bank_signup(request):
 
 def login_user(request):
     # Excecuted when User submit the form.
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('accounts:main'))
+
     if request.method == 'POST':
         # Authenticate User based on username and password.
-        email = request.POST['email']
+        user_input = request.POST['email']
+
+        try:
+            email = User.objects.get(username=user_input).email
+        except User.DoesNotExist:
+            email = request.POST['email']
+
         password = request.POST['password']
+
         user = authenticate(request, email=email, password=password)
 
         # Executed when User is valid. Redirect to home page.
         if user is not None:
             login(request, user)
-            return redirect('accounts:main')
+            response = redirect('accounts:main')
+            response.set_cookie('last_login', str(datetime.datetime.now())) # membuat cookie last_login dan menambahkannya ke dalam response
+            return response
 
         # Executed when User is not valid. Redirect to login page.
         else:
-            messages.success(request, 'There was an error logging In. Please try again!')
+            messages.success(request, 'Invalid login. Please try again!')
 
     # Rendering login.html.
     return render(request, "login.html")
@@ -121,6 +144,8 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('accounts:login'))
+    response.delete_cookie('last_login')
+    request.session.flush()
     return response
 
 def is_ajax(request):

@@ -43,8 +43,8 @@ class User(AbstractUser):
     gender = models.CharField(max_length=20)
     city = models.CharField(max_length=100)
     address = models.TextField(null=True)
-    score = models.IntegerField(null=True)
-    weight = models.IntegerField(null=True)
+    score = models.IntegerField(default=0)
+    weight = models.IntegerField(default=0)
 
     is_regular = models.BooleanField(default=False)
     is_bank = models.BooleanField(default=False)
