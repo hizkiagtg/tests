@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Donasi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <h2>Donasi</h2>
+    <form method="POST" id="post-form">
+      <h5>Jenis:</h5>
+
+      <input type="radio" id="karung" value="karung" name="jenis_sampah">
+      <label for="organik">Karung</label>
+     
+      <input type="radio" id="ban" value="ban" name="jenis_sampah">
+      <label for="anorganik">Ban</label>
+    
+      <input type="radio" id="ember" value="ember" name="jenis_sampah">
+      <label for="anorganik">Plastik Emberan</label>
+     
+      <input type="radio" id="plastik" value="plastik" name="jenis_sampah">
+      <label for="anorganik">Aneka Plastik</label>
+
+      <input type="radio" id="logam" value="logam" name="jenis_sampah">
+      <label for="anorganik">Logam</label>
+     
+      <input type="radio" id="botol" value="botol" name="jenis_sampah">
+      <label for="anorganik">Botol Kaca</label>
+    
+      <input type="radio" id="elektronik" value="elektronik" name="jenis_sampah">
+      <label for="anorganik">Elektronik</label>
+
+
+      <br>  
+      <h5>Berat:</h5>
+      <input type="text" id="berat" placeholder="Masukkan Berat (Kg)">
+      <br>
+
+    
+      <input type="submit" class="btn btn-primary mt-4">
+    </form>
+
+    <script src="{% static 'main.js' %}"></script>
+  </body>
+
+
+{% endblock content %}

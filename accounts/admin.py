@@ -13,7 +13,7 @@ from django.contrib.auth.admin import UserAdmin
 from .models import User
 
 class CustomUserAdmin(UserAdmin):
-    list_display = ('name', 'email','username','is_admin','is_staff', 'is_regular', 'is_bank')
+    list_display = ('name', 'email','username','is_admin','is_staff', 'is_regular', 'is_bank','weight','score','id')
     search_fields = ('email','username',)
     readonly_fields = ('id',)
     add_fieldsets = (
