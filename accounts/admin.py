@@ -22,16 +22,3 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('email','username',)
     
 admin.site.register(User, CustomUserAdmin) 
-
-
-
-# class RegularUserAdmin(UserAdmin):
-#     add_form = RegularSignUpForm
-#     model = Regular
-#     list_display = ["email", "username",]
-
-# admin.site.register(CustomUser, CustomUserAdmin)
-
-# admin.site.register(User)
-# admin.site.register(Regular)
-# admin.site.register(Bank)
