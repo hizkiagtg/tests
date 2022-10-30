@@ -56,7 +56,7 @@ def add_donasi(request, id_bank):
     else:
         return HttpResponse("nunggu indri")
 
-
+@login_required
 def show_history(request):
     return render(request, 'history.html')
 
