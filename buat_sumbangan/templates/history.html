@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome page</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+</head>
+<body>
+<div>
+    <h1>Welcome to APAP sample home page!</h1>
+</div>
+<div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</div>
+
+<div>
+
+<table id="table_result" class="display" style="width:100%">
+    <thead>
+    <tr>
+        <th>Tanggal</th>
+        <th>Bank Sampah</th>
+        <th>Jenis Sampah</th>
+        <th>Berat Sampah</th>
+        <th>Poin</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Data 1</td>
+        <td>Data 2</td>
+        <td>Data 3</td>
+        <td>Data 4</td>
+        <td>Data 5</td>
+    </tr>
+    </tbody>
+</table>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#table_result').DataTable({
+            "ajax": {
+                "url": "{% url 'buat_sumbangan:donasi_json' %}",
+                "dataSrc": ''
+            },
+            "searching": true,
+            "ordering": true,
+            "columns": [
+                {"data": "fields.date"},
+                {"data": "fields.bank_sampah"},
+                {"data": "fields.jenis"},
+                {"data": "fields.berat"},
+                {"data": "fields.poin"},
+            ]
+        });
+    });
+
+
+    
+</script>
+
+</body>
+</html>

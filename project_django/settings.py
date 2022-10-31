@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'forum',
     'leaderboard',
+    'buat_sumbangan',
 ]
 
 MIDDLEWARE = [

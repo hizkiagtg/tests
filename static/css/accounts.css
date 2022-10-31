@@ -1,13 +1,13 @@
-.menu-bar{
-    background-image: linear-gradient(to right, rgb(66, 103, 145), rgb(234, 144, 183));
-    /* background-color: #654321;
-    background-image: linear-gradient(180deg, rgba(#d38312, .15), rgba(#a83279, 0)); */
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-h1 {
-    color: white;
-    text-align: center; 
-    text-shadow: 2px 2px 6px #281f46;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif!important;;
+}
+body {
+    font-family: 'Poppins',sans-serif!important;;
 }
 
 .body2 {
@@ -21,38 +21,37 @@ h1 {
     background-attachment: fixed;
 }
 
-.title-input {
-    color:rgb(50, 50, 50);
-    /* font-weight: bold; */
+.form-floating>.form-control,
+.form-floating>.form-control-plaintext {
+    padding: 0rem 0.75rem;
+    height: calc(2.5rem + 3px);
+    line-height: 1;
 }
 
-.login_btn {
-background-color: #423a5d;
-transition-duration: 0.4s;
+.form-floating>label {
+    padding: 0.75rem 0.75rem;
+    font-size: 12.5px;
+    font-weight: 500;
 }
 
-.login_btn:hover {
-background-color: #4CAF50; /* Green */
-color: white;
+.form-floating>input {
+    font-size: 13px;
+    font-weight: 450;
 }
-
-.btn-logout {
-    color: #fff;
-    background: white;
-    border: white;
-    border-radius: 10px;
-    font-size: 12px;
-    padding: 10px 20px;
-    width: 10px;
+.form-floating>select {
+    font-size: 13px;
+}
+.form-floating>select>option {
+    font-size: 13px;
 }
 
 /* Code source: https://ordinarycoders.com/blog/article/codepen-bootstrap-card-hovers */
 
-/* .card{
+.card{
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
     cursor: pointer;
 }
 
 .card:hover{
     transform: scale(1.03);
-} */
+}

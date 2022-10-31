@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User, BaseUserManager
-
+from django.contrib.auth.validators import UnicodeUsernameValidator
 
 # Create your models here.
 class UserManager(BaseUserManager):
@@ -35,16 +35,17 @@ class UserManager(BaseUserManager):
 
         return user
 
+
 class User(AbstractUser):
-    username = models.CharField(max_length = 20, blank = True, null = True, unique = True)
-    email = models.EmailField(verbose_name="email", max_length=50, unique=True)
-    name = models.CharField(max_length=50)
+    username = models.CharField(error_messages={'unique': 'A user with that username already exists.'}, help_text='Required. 150 characters or fewer. Letters, digits and ./+/-/_ only.', max_length=150, unique=True, validators=[UnicodeUsernameValidator()], verbose_name='username', null=True)
+    email = models.EmailField(verbose_name="email", max_length=255, unique=True)
+    name = models.CharField(max_length=100)
     age = models.IntegerField(null=True)
     gender = models.CharField(max_length=20)
     city = models.CharField(max_length=100)
     address = models.TextField(null=True)
-    score = models.IntegerField(null=True)
-    weight = models.IntegerField(null=True)
+    score = models.IntegerField(default=0)
+    weight = models.IntegerField(default=0)
 
     is_regular = models.BooleanField(default=False)
     is_bank = models.BooleanField(default=False)
@@ -57,6 +58,12 @@ class User(AbstractUser):
 
     user = UserManager()
 
+    def add_score(self,score):
+        self.score += score
+
+    def add_weight(self,weight):
+        self.weight += weight
+
     def __str__(self):
         return "{}".format(self.email)
     
@@ -65,19 +72,3 @@ class User(AbstractUser):
 
     def has_module_perms(self, app_label):
         return True
-    
-# class Regular(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-
-#     def __str__(self):
-#         return str(self.username)
-
-# class Bank(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-    
-#     add_fieldsets = (
-#             (None, {'fields': ('email', 'username', 'city',)}),
-#     )
-
-#     def __str__(self):
-#         return str(self.institute_name)
