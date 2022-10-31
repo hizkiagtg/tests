@@ -32,16 +32,4 @@ class CustomUserAdmin(UserAdmin):
         ),
     )
     
-    # fieldsets = (
-    #     (None, {
-    #         'fields': ('name', 'city', 'email','username','is_admin','is_staff', 'is_regular', 'is_bank', 'gender')
-    #     }),
-    #     # ('Advanced options', {
-    #     #     'classes': ('collapse',),
-    #     #     'fields': ('registration_required', 'template_name'),
-    #     # }),
-    # )
-    # list_display = ('name', 'city', 'email','username','is_admin','is_staff', 'is_regular', 'is_bank', 'gender')
-    # search_fields = ('email','username',)
-    
 admin.site.register(User, CustomUserAdmin) 
