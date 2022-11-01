@@ -1,43 +1,22 @@
 {% extends 'base.html' %}
-
-
+{% load static %}
 
 {% block content %}
-
-<script>
-
-
-
-</script>
-
-<nav class="navbar" >
-    <div class="container-fluid">
-      <a class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-ajax">Add Your Questions</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-</nav>
+<head>
+    <link rel="stylesheet" href="{% static 'forum.css' %}">
+    <script src="{% static 'forum.js' %}"></script>
+    {% include 'navbar.html' %}
+</head>
 
 
-<div class= "page" >
-    <h1 class="title">All questions</h1>
-
-    {% for question in questions %}
-
-    <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                {{question.title}}
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>by {{question.author.username}}</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
-          </div>
+<body id = "id1">
+    <div class= "page" style="padding:5%;">
+        <h1 class="title">All questions</h1>
+        <div class = "content">
+            {% include 'question-list.html' %}
+        </div>
     </div>
-    {% endfor %}
-</div>
-
+</body>
 
 <!-- modal -->
 <div class="modal fade" id="modal-ajax" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
