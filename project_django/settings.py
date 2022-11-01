@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'example_app',
     'accounts',
     'forum',
+    'buat_sumbangan',
     'profile_user'
 ]
 
