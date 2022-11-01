@@ -8,9 +8,10 @@ class Question(models.Model):
     body = models.TextField(null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     def __str__(self):
-        return self.title
+        return self.title 
+
     def get_responses(self):
         return self.responses.filter(parent=None)
 
@@ -23,7 +24,9 @@ class Answer(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.body
+        return self.title 
 
     def get_responses(self):
         return Answer.objects.filter(parent=self)
+
+    
