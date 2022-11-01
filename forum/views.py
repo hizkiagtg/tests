@@ -1,3 +1,4 @@
+from django.core import serializers
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -15,6 +16,10 @@ def addQuestion(request):
         Question.save()
         return HttpResponse(b"CREATED", status=20)
     return HttpResponseNotFound()
+
+def get_question(request):
+    questions = Question.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', questions), content_type='application/json')
 
 def homePage(request):
     questions = Question.objects.all().order_by('-created_at')
