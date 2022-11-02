@@ -12,7 +12,16 @@ def addQuestion(request):
         title = request.POST.get('title')
         body = request.POST.get('body')
         newQuestion = Question(user=request.user, title=title, body = body, date= datetime.now())
-        Question.save()
+        newQuestion .save()
+        return HttpResponse(serializers.serialize("json",[newQuestion]), content_type="application/json")
+    return HttpResponseNotFound()
+
+@login_required(login_url='accounts:login')
+def addAnswer(request):
+    if request.method == "POST":
+        body = request.POST.get('body')
+        newAnsewer = Answer(user=request.user, body = body, date= datetime.now())
+        newAnsewer.save()
         return HttpResponse(b"CREATED", status=20)
     return HttpResponseNotFound()
 
@@ -20,8 +29,10 @@ def questionJson(request):
     questions = Question.objects.all()
     return HttpResponse(serializers.serialize('json', questions), content_type='application/json')
 
-def answerJson(request, id):
-    answer = Answer.objects.filter(pk = id)
+
+def answerJson(request):
+    answer = Answer.objects.all()
+
     return HttpResponse(serializers.serialize('json', answer), content_type='application/json')
 
 def homePage(request):
@@ -30,6 +41,7 @@ def homePage(request):
         'questions': questions
     }
     return render(request, 'forum.html', context)
+
 """
 @login_required(login_url='accounts:login')
 def replyPage(request):
@@ -52,3 +64,4 @@ def replyPage(request):
     return redirect('index')
 
 """
+
