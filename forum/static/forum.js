@@ -58,10 +58,11 @@ function getCard(task) {
                     <strong>at ${task.fields.created_at} </strong> 
                     <p>${task.fields.body}</p>
                 </div>
+                <div id ="content-reply">
 
-                <div class ="content-reply">
                     
                     <a class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-reply">Add Your Answer</a>
+
                     
                 </div>
 
@@ -73,7 +74,30 @@ function getCard(task) {
 }
 
 function submitNewTask(taskForm) {
-    $.post("addQuestion", $(taskForm).serialize(), function(data){
+    $.post("addQuestion/", $(taskForm).serialize(), function(data){
         document.getElementById("content").innerHTML += getCard(data[0]);
+    });
+}
+
+function getReply(task) {
+    item = `    
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <div id="collapse${task.pk}" class="accordion-collapse collapse show" aria-labelledby="heading${task.pk}" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Asked by ${task.fields.author}</strong> 
+                    <strong>at ${task.fields.created_at} </strong> 
+                    <p>${task.fields.body}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+    return item;
+}
+
+function submitNewRep(taskForm) {
+    $.post("answerJson/", $(taskForm).serialize(), function(data){
+        document.getElementById("content-reply").innerHTML += getReply(data[0]);
     });
 }
