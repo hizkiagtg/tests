@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from buat_sumbangan import *
 import datetime
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -51,12 +51,12 @@ def add_donasi(request, id_bank):
 
             new_donasi.save()
             user.save()
-
-            HttpResponseRedirect(reverse('accounts:login'))
+            
+            return HttpResponseRedirect(reverse('leaderboard:home_user_login'))
 
         return render(request, 'form_donasi.html', context)
     else:
-        HttpResponseRedirect(reverse('accounts:login'))
+        return HttpResponseRedirect(reverse('leaderboard:home_user_login'))
 
 @login_required
 def show_history(request):
