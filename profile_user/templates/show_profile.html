@@ -10,50 +10,26 @@
 </head>
 
 <body>
-    <main class = "main-container"></main>
-    <h1> Here's Your Profile</h1>
-        <div class="container">
-            <!-- <h1> Here's Your Profile</h1> -->
-            <div class = "show_profile">
-                <div class = profilepic>
+    {% if user.is_regular %}
+    <main class = "main-container-reg">
+        <!-- <h1> Here's Your Profile</h1> -->
+        <div class="container-reg">
+            <h1 class="h1-reg"> Here's Your Profile</h1>
+            <div class = "show_profile_reg">
+                <div class = profilepic-reg>
                     <img src="{% static 'images/user_icon.png' %}" width="100px">
                 </div>
-                <div class = "details">
-                    {% if user.is_regular %}
-                        <p >Name: </p>
-                        <p id="name">{{user.name}}</p>
-
-                        <label >Username: </label>
-                        <p id="username">{{user.username}}</p>
-
-                        <label for="age">Age: </label>
-                        <p id="age">{{user.age}}</p>
-
-                        <label for="gender">Gender: </label>
-                        <p id="gender">{{user.gender}}</p>
-
-                        <label for="email"></label>
-                        <p id="email">{{user.email}}</p>
-
-                        <label for="city"></label>
-                        <p id="city">{{user.city}}</p>
                     
-                    {% elif user.is_bank %}
-                        <label for="name"></label>
-                        <p id="name">{{user.name}}</p>
-
-                        <label for="email"></label>
-                        <p id="email">{{ user.email}}</p>
-
-                        <label for="city"></label>
-                        <p id="city">{{user.city}}</p>
-
-                        <label for="address"></label>
-                        <p id="address">{{user.address}}</p>
-                    
-                    {% endif %}
+                <div class = "details-reg"> 
+                    <p id="name-reg">{{user.name}}</p>       
+                    <p id="username-reg">{{user.username}}</p>                  
+                    <p id="age-reg">{{user.age}}</p>                         
+                    <p id="gender-reg">{{user.gender}}</p>                        
+                    <p id="email-reg">{{user.email}}</p>        
+                    <p id="city-reg">{{user.city}}</p>
                 </div>
-                <div class = "edit_profile">
+
+                <div class = "edit-profile-reg">
                     <h5> Do you want to edit your profile?
                     <a href="/profile_user/edit_profile"> Edit here</a>
                     </h5>
@@ -61,5 +37,34 @@
             </div>
         </div>
     </main>
+                    
+    {% elif user.is_bank %}
+    <main class = "main-container-bank">
+        <!-- <h1> Here's Your Profile</h1> -->
+        <div class="container-bank">
+            <h1 class="h1-bank"> Here's Your Profile</h1>
+            <div class = "show_profile_bank">
+                <div class = profilepic_bank>
+                    <img src="{% static 'images/bank_icon.png' %}" width="100px">
+                </div>
+
+                <div class = "details-bank">
+                    <p id="name-bank">{{user.name}}</p>
+                    <p id="email-bank">{{ user.email}}</p>
+                    <p id="city-bank">{{user.city}}</p>
+                    <p id="address-bank">{{user.address}}</p>
+                </div>
+
+                <div class = "edit-profile-bank">
+                    <h5> Do you want to edit your profile?
+                    <a href="/profile_user/edit_profile"> Edit here</a>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </main>
+                    
+    {% endif %}
+    
 </body>
 </html>

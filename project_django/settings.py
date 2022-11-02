@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'accounts',
     'forum',
     'buat_sumbangan',
-    'profile_user'
+    'profile_user',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [

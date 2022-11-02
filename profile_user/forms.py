@@ -1,12 +1,10 @@
 from django import forms
 from accounts.models import User
-from django.forms.models import ModelForm
-from django.forms.widgets import FileInput
 
 class EditProfileFormReg(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'name', 'age', 'gender', 'city', 'address']
+        fields = ['username', 'email', 'name', 'age', 'gender', 'city']
 
 class EditProfileFormBank(forms.ModelForm):
     class Meta:

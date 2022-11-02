@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-h1 {
-    margin-top : 70px;
-    padding-bottom: 20px;
+h1-bank{
+    margin-top : 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: rgb(31, 108, 25);
+}
+h1-reg{
+    margin-top: 100px;
+    padding-top: 100px;
+    /* padding: auto; */
     text-align: center;
     color: rgb(31, 108, 25);
 }
@@ -14,8 +21,98 @@ h1 {
 body{
     background-color: #bfbebe;
 
+    /* FOR BANK */
 }
-.main-container{
+.main-container-bank{
+    width: 650px;
+    height: 100px;
+    background: #bfbebe;
+    border-radius: 30px;
+    display: block;
+    margin: auto;
+    display: flex;
+    padding: 50px;
+    padding-bottom: 0px;
+    margin-bottom: 100px;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+
+} 
+.container-bank{
+    width: 500px;
+    height: 350px;
+    background: rgba(253, 253, 253, 0.767);
+    border-radius: 40px;
+    display: block;
+    margin: auto;
+    display: flex;
+    padding: 50px;
+    align-items: center;
+    margin-bottom: 90px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 2px 2px 5px 5px rgb(71, 66, 66);
+
+}
+.profilepic-bank {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profilepic-bank img{
+    width: 10em;
+    height: 10em;
+    align-items: center;
+    /* object-fit: cover; */
+    margin: auto;
+    /* border-radius: 50%; */
+    /* margin: .5em auto; */
+
+}
+.details-bank{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    padding-top: 20px;
+    
+
+}
+#name-bank{
+    font-size: 2em;
+    font-weight: 600;
+    margin: 5px 0;
+    text-align: center;
+}
+
+#email-bank{
+    text-align: center;
+    padding: 5px;
+    font-size: 1em;
+}
+
+#city-bank{
+    text-align: center;
+    padding: 5px;
+    font-size: 1em;
+}
+
+#address-bank{
+    text-align: center;
+    padding: 5px;
+    font-size: 1em;
+}
+
+.edit-profile-bank{
+    text-align: center;
+    padding: 5px;
+    font-size:medium;
+}
+
+/* FOR REG */
+.main-container-reg{
     width: 650px;
     height: 100px;
     background: #bfbebe;
@@ -29,9 +126,9 @@ body{
     font-family: 'Roboto', sans-serif;
 
 } 
-.container{
-    width: 350px;
-    height: 350px;
+.container-reg{
+    width: 600px;
+    height: 450px;
     background: rgba(253, 253, 253, 0.767);
     /* background-image: linear-gradient(to bottom right, rgb(240, 157, 222), #564df7); */
     border-radius: 40px;
@@ -46,7 +143,7 @@ body{
     box-shadow: 2px 2px 5px 5px rgb(71, 66, 66);
 
 }
-.profilepic {
+.profilepic-reg {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,7 +151,7 @@ body{
     /* padding-left: 37%; */
 }
 
-.profilepic img{
+.profilepic-reg img{
     width: 10em;
     height: 10em;
     object-fit: cover;
@@ -62,45 +159,23 @@ body{
     margin: .5em auto;
 
 }
-.details{
-    /* width: 400px;
-    margin-top: -50px;
-    margin-right: 0px;
-    margin: auto;
-    padding: 50px;
-    background:rgb(255, 255, 255);
-    border-radius: 0% 0px 0px 0%;
-    align-items: center; */
+.details-reg{
+
     display: flex;
     flex-direction: column;
     margin: auto;
     align-items: center;
-    /* padding-left: -50em; */
+    
 
 }
-#name{
+#name-reg{
     font-size: 2em;
     font-weight: 600;
     margin: 5px 0;
     text-align: center;
-}
-
-#email{
-    text-align: center;
     padding: 5px;
 }
-
-#city{
-    text-align: center;
-    padding: 5px;
-}
-
-#address{
-    text-align: center;
-    padding: 5px;
-}
-
-#username{
+#username-reg{
     font-size: 1.6em;
     font-weight: 600;
     color: rgba(0, 0, 0, 0.876);
@@ -108,16 +183,20 @@ body{
     width: 80%;
     line-height: 1.3em;
     padding: 5px;
-}
-#age{
     text-align: center;
-    padding: 5px;
 }
-#gender{
-    text-align: center;
-    padding: 5px;
-}
-.edit_profile{
+#age-reg{
     text-align: center;
     padding: 8px;
 }
+#gender-reg{
+    text-align: center;
+    padding: 8px;
+}
+.edit-profile-reg{
+    text-align: center;
+    padding: 8px;
+}
+
+
+
