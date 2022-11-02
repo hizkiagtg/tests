@@ -16,3 +16,8 @@ body {
     padding-left: 20px;
     padding-bottom: 20px;
 }
+
+.modal-backdrop {
+    background: rgb(174, 238, 193);
+    background: radial-gradient(circle, #92ac9b 0%, #bacec1 50%, #f6f4e8 100%);
+}

@@ -31,10 +31,24 @@ function getCard(task) {
                     <strong>at ${task.fields.created_at} </strong> 
                     <p>${task.fields.body}</p>
                 </div>
-                <button type="button" class="btn btn-info">Respond This Thread</button>
+                <div class ="content-reply">
+                    <nav class="navbar navbar-light bg-light">
+                    <a class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-reply">Add Your Questions</a>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
     `
     return item;
+}
+
+async function getReply() {
+    $.getJSON("answerJson", function(data) {
+        var questionHTML = '';
+        $.each(data, function (key, task) {
+            questionHTML += getCardReply(task);
+        });
+        document.getElementById("content-reply").innerHTML = questionHTML;
+    })
 }
