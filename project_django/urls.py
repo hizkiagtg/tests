@@ -25,4 +25,5 @@ urlpatterns = [
     path('descriptions/', include('descriptions.urls')),
     path('forum/', include('forum.urls')),
     path('leaderboard/', include('leaderboard.urls')),
+    path('for_profile/', include('for_profile.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
