@@ -27,4 +27,5 @@ urlpatterns = [
     path('leaderboard/', include('leaderboard.urls')),
     path('tukarpoin/', include('tukarpoin.urls')),
     path('for_profile/', include('for_profile.urls')),
+    path('', include('leaderboard.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
