@@ -5,6 +5,7 @@ app_name = 'descriptions'
 
 urlpatterns = [
     path('', desc_json, name='desc_json'),
-    path('upload/', upload_desc, name='upload_desc'),
+    path('upload/', show_upload_form, name='show_upload_form'),
+    path('add/', upload_desc, name='upload_desc'),
     path('details/<int:id>/', show_details, name='show_details'),
 ]

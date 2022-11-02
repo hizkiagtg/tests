@@ -13,30 +13,37 @@
 {% endblock meta %}
 
 {% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #bacec1;">
+    <div class="container px-5">
+        <a class="navbar-brand" href="#!">Wazzt</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'leaderboard:home_user_login' %} ">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../leaderboard/#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">Forum</a></li>
+                <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../leaderboard/#contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout'%}">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <section class = "full-width d-flex justify-content-center align-items-center">
-    <div class="container-fluid d-flex justify-content-center align-items-center w-50">
+    <div class="container-fluid d-flex justify-content-center align-items-center w-75">
         <div class="card border-0 w-75" style="border-radius:2rem ; background-color:white ;">
             <div class="row g-0">
-                <div class="card-body mx-3">
+                <div class="card-body px-4">
                     <h2 class="card-title mb-5 mt-3" style="text-align: center;">Upload Description</h2>
-                    <form class="ml-3" method="POST" action="" enctype="multipart/form-data">
+                    <form id="form" onsubmit="return false;">
                         {% csrf_token %}
                         
                         {{form|crispy}}
                         
-                        <button type="submit" class="btn btn-outline-primary w-100 mb-3" value="Upload Description">Upload Description</button>
+                        <button id="submit_new" type="submit" class="btn btn-outline-primary w-100 mb-3" value="Upload Description">Upload Description</button>
                     
                     </form>
-
-                    <!-- <form id="form" class="ml-3" onsubmit="return false;">
-                        {% csrf_token %}
-                        
-                        {{form|crispy}}
-                        
-                        <button type="submit" class="btn btn-outline-primary w-100 mb-3" value="Upload Description">Upload Description</button>
-                    
-                    </form> -->
                 </div>
             </div>
         </div>
@@ -44,11 +51,16 @@
 </section>
 
 <script>
+    document.getElementById("submit_new").onclick = uploadDesc
+
     function uploadDesc() {
         fetch("{% url 'descriptions:upload_desc' %}", {
             method: "POST",
             body: new FormData(document.querySelector('#form'))
-        }).then(console.log("uploaded!"))
+        }).then(alert("Uploaded!"))
+
+        document.getElementById("form").reset()
+        window.location.href = "../../leaderboard";
 
         return false
     }
