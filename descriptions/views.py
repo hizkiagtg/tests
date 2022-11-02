@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
 from descriptions.models import *
+from descriptions.forms import *
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
