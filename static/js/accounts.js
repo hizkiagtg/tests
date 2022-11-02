@@ -124,5 +124,7 @@ for (var j = 0; j < sortedcity.length; ++j) {
 
 document.getElementById("select1").innerHTML = st;
 document.getElementById("select2").innerHTML = st;
+document.getElementById("domisili-reg").innerHTML = st;
+document.getElementById("domisili-bank").innerHTML = st;
 
 

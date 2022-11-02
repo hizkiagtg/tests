@@ -1,0 +1,88 @@
+*, body {
+    margin: 0;
+    padding: 0;
+    font-family: Nunito;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+textarea {
+    resize: none;
+}
+
+button{
+    margin: auto;
+}
+h1{
+    text-align: center;
+}
+body{
+    background-color: #ffffff;
+}
+
+/* FOR REG */
+.edit-profile-reg{
+    width: 800px;
+    height: auto;
+    background: rgba(253, 253, 253, 0.767);
+    border-radius: 40px;
+    display: block;
+    margin: auto;
+    padding: 50px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    color: rgb(58, 109, 90);
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 2px 2px 5px 5px rgb(71, 66, 66);
+    
+}
+
+.pic-reg{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.radio-reg{
+    padding-right: 120px;
+}
+label{
+    align-items:center;
+}
+form{
+    margin: auto;
+}
+
+/* FOR BANK */
+.edit-profile-bank{
+    width: 500px;
+    height: auto;
+    background: rgba(253, 253, 253, 0.767);
+    border-radius: 40px;
+    display: block;
+    margin: auto;
+    margin-bottom: 50px;
+    padding: 50px;
+    margin-top: 60px;
+    color: rgb(75, 136, 93);
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 2px 2px 5px 5px rgb(71, 66, 66);
+    
+}
+.pic-bank{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.radio-bank{
+    padding-right: 120px;
+}

@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.h1-bank{
+    margin-top : 50px;
+    padding-bottom: 20px;
+    text-align: center;
+    margin:auto;
+    color: rgb(31, 108, 25);
+}
+.h1-reg{
+    margin-top: 150px;
+    padding-top: 100px;
+    text-align: center;
+    color: rgb(31, 108, 25);
+}
+a{
+    font-size: small;
+    text-align: center;
+}
+
+*, body {
+    margin: 0;
+    padding: 0;
+    font-family: Nunito;
+}
+body{
+    background-color: #82ba7e;
+}
+
+/* FOR BANK */
+.container-bank{
+    width: 500px;
+    height: 400px;
+    background: rgba(253, 253, 253, 0.767);
+    border-radius: 40px;
+    display: block;
+    margin: auto;
+    margin-top: 250px;
+    display: flex;
+    padding: 50px;
+    color: rgb(31, 108, 25);
+    
+    align-items: center;
+    margin-bottom: 90px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 2px 2px 5px 5px rgb(71, 66, 66);
+
+}
+.profilepic_bank {
+    align-items: center;
+}
+
+.profilepic_bank img{
+    width: 7em;
+    height: 7em;
+    align-items: center;
+    object-fit: cover;
+    margin: auto;
+}
+.details-bank{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-right: 30px;
+    align-items: center;
+    padding-top: 1px;   
+
+}
+#name-bank{
+    font-size: 2em;
+    font-weight: 600;
+    margin: 5px 0;
+    text-align: center;
+}
+
+#email-bank{
+    text-align: center;
+    padding: 1px;
+    font-size: large;
+}
+
+#city-bank{
+    text-align: center;
+    padding: 1px;
+    font-size: medium;
+}
+
+#address-bank{
+    text-align: center;
+    padding: 1px;
+    font-size: medium;
+}
+
+.edit-profile-bank{
+    text-align: center;
+    padding: 1px;
+    font-size:small;
+    margin-right: 30px;
+}
+
+/* FOR REG */
+.container-reg{
+    width: 600px;
+    height: 700px;
+    background: rgba(253, 253, 253, 0.767);
+    /* background-image: linear-gradient(to bottom right, rgb(240, 157, 222), #564df7); */
+    border-radius: 40px;
+    display: block;
+    margin: auto;
+    display: flex;
+    padding: 50px;
+    /* padding-bottom: 50px; */
+    margin-bottom: 90px;
+    margin-top: 90px;
+    /* padding-left: 50px; */
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 2px 2px 5px 5px rgb(71, 66, 66);
+    color: rgb(31, 108, 25);
+
+}
+.profilepic-reg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding-left: 37%; */
+}
+
+.profilepic-reg img{
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: .5em auto;
+
+}
+.details-reg{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    
+}
+#name-reg{
+    font-size: 2em;
+    font-weight: 600;
+    margin: 5px 0;
+    text-align: center;
+    padding: 5px;
+}
+#username-reg{
+    font-size: 1.6em;
+    font-weight: 600;
+    margin: 5px 0;
+    width: 80%;
+    line-height: 1.3em;
+    padding: 5px;
+    text-align: center;
+}
+#email-reg{
+    text-align: center;
+    padding: 5px;
+    margin: 5px 0;
+}
+#age-reg{
+    text-align: center;
+    padding: 5px;
+    margin: 5px 0;
+}
+#gender-reg{
+    text-align: center;
+    padding: 5px;
+    margin: 5px 0;
+}
+.edit-profile-reg{
+    text-align: center;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+
+
