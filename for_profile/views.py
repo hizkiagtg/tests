@@ -23,9 +23,12 @@ def edit_profile(request):
         if request.method == 'POST':
             form_edit = EditProfileFormReg(request.POST, instance=request.user)
             email_exists = User.objects.filter(email=request.POST.get("email")).exists()
+            username_exists = User.objects.filter(username=request.POST.get("username")).exists()
+
             if email_exists:
                 messages.error(request, "Email is already used! Use other email.")
-
+            elif username_exists:
+                messages.error(request, "Username is already used! Choose other username.")
             elif form_edit.is_valid():
                 form_edit.save()
                 messages.success(request, "Succesfully Updated Profile!")
@@ -40,7 +43,7 @@ def edit_profile(request):
                 "gender": form_edit.gender,
                 "city": form_edit.city,
                 })
-                
+
     elif user.is_bank:
         if request.method == 'POST':
             form_edit = EditProfileFormBank(request.POST, instance=request.user)
