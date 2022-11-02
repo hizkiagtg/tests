@@ -21,5 +21,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('sumbang/', include('buat_sumbangan.urls')),
     path('leaderboard/', include('leaderboard.urls')),
-    # path('', include('forum.urls')),
+    path('forum/', include('forum.urls')),
 ]
