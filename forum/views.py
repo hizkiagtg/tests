@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Question, Answer
-from forum.forms import  NewResponseForm, NewReplyForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.http import HttpResponseNotFound
 
@@ -21,34 +20,17 @@ def questionJson(request):
     questions = Question.objects.all()
     return HttpResponse(serializers.serialize('json', questions), content_type='application/json')
 
+def answerJson(request, id):
+    answer = Answer.objects.filter(pk = id)
+    return HttpResponse(serializers.serialize('json', answer), content_type='application/json')
+
 def homePage(request):
     questions = Question.objects.all().order_by('-created_at')
-    
-def questionPage(request, id):
-    response_form = NewResponseForm()
-    reply_form = NewReplyForm()
-    if request.method == 'POST':
-        try:
-            response_form = NewResponseForm(request.POST)
-            if response_form.is_valid():
-                response = response_form.save(commit=False)
-                response.user = request.user
-                response.question = Question(id=id)
-                response.save()
-                return redirect('/question/'+str(id)+'#'+str(response.id))
-        except Exception as e:
-            print(e)
-            raise
-
-    question = Question.objects.get(id=id)
     context = {
-        'question': question,
-        'response_form': response_form,
-        'reply_form': reply_form,
+        'questions': questions
     }
-    return render(request, 'question.html', context)
-
-
+    return render(request, 'forum.html', context)
+"""
 @login_required(login_url='accounts:login')
 def replyPage(request):
     if request.method == 'POST':
@@ -68,3 +50,5 @@ def replyPage(request):
             raise
 
     return redirect('index')
+
+"""

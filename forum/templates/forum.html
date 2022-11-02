@@ -15,16 +15,15 @@
 
 <body id = "id1">
     <div class= "page" style="padding:8%;">
-        <h1 class="title">All questions</h1>
         {% include 'question-list.html' %}
     </div>
 </body>
 
 <!-- modal -->
 <div class="modal fade" id="modal-ajax" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" >
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" id = "id2">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Question</h1>
             </div>
             <div class="modal-body">
@@ -36,6 +35,32 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="col-form-label">Question</label>
+                        <textarea class="form-control" id="description"  name="description" required></textarea>
+                    </div>
+                    <input type="submit" id="submit-modal" class="btn btn-primary" data-bs-dismiss="modal"></input>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal -->
+<div class="modal fade" id="modal-reply" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header" id = "id2">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Answer</h1>
+            </div>
+            <div class="modal-body">
+                <form id="form-submit" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="title" class="col-form-label">Title</label>
+                        <input type="text" name="title" class="form-control" id="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Answer</label>
                         <textarea class="form-control" id="description"  name="description" required></textarea>
                     </div>
                     <input type="submit" id="submit-modal" class="btn btn-primary" data-bs-dismiss="modal"></input>
