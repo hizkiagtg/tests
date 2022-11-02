@@ -10,6 +10,7 @@ $(document).on('submit','#post-form',function(e){
         },
         dataType: 'json',
         success:function(json){
+            console.log("bisa ga si sukss?")
             alert("Donasi Diterima");
             document.getElementById("post-form").reset();
         }
