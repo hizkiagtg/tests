@@ -27,7 +27,7 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Question</h1>
             </div>
             <div class="modal-body">
-                <form id="form-submit" method="POST">
+                <form id="taskForm" method="POST">
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="title" class="col-form-label">Title</label>
@@ -37,8 +37,9 @@
                         <label for="description" class="col-form-label">Question</label>
                         <textarea class="form-control" id="description"  name="description" required></textarea>
                     </div>
-                    <button id="submit-task" class="btn btn-primary" onclick="submitNewTask(taskForm)">Submit</button>
+                    
                 </form>
+                <button id="submit-task" class="btn btn-primary" onclick="submitNewTask(taskForm)">Submit Your Question</button>
             </div>
         </div>
     </div>
@@ -47,7 +48,6 @@
 
 <!-- modal -->
 <div class="modal fade" id="modal-reply" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
     <div class="modal-dialog" >
         <div class="modal-content">
             <div class="modal-header" id = "id2">
@@ -60,9 +60,8 @@
                         <label for="description" class="col-form-label">Answer</label>
                         <textarea class="form-control" id="description"  name="description" required></textarea>
                     </div>
-                    <input type="submit" id="submit-task" class="btn btn-primary" onclick="submitNewTask(taskForm)"></input>
-
                 </form>
+                <button id="submit-task" class="btn btn-primary" onclick="submitNewRep(taskForm)">Submit Your Reply</button>
             </div>
         </div>
     </div>
