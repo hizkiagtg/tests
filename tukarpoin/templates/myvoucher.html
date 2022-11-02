@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>REDEEM</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'css\tukarpoin.css' %}" />
+    <noscript><link rel="stylesheet" href="{% static 'css\nonscriptTukarPoin.css' %}" /></noscript>
+
+</head>
+
+<body>
+    <div id="page-wrapper">
+        <header id="header">
+            <h1 id="logo"><a href="{% url 'tukarpoin:tukarpoin' %}">HOME</a></h1>
+            <nav id="nav">
+                <ul>
+                    <li><a href="{% url 'tukarpoin:add' %}">add voucher for BANK USER</a></li>
+                    <li><a href="{% url 'tukarpoin:mine' %}">my voucher</a></li>
+                    <li><a href="{% url 'accounts:logout' %}" class="button primary">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="main" class="wrapper style1">
+            <div class="container">
+                <header class="major">
+                    <h2>My Vouchers</h2>
+                    <h2>My Poin: ${user_poin}</h2>
+
+                </header>
+
+                <!-- Content -->
+                <div class="flex justify-center">
+                    <div id="myvouchers-section" class="mx-7 md:mx-14 lg:mx-28 xl:mx-72 w-full mt-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+            <footer id="footer">
+                <ul class="icons">
+                    <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Project Mid Term PBP</li><li>GitHub: loraglori</li>
+                </ul>
+            </footer>
+
+        <!-- Scripts -->
+            <script src="static\js\tukarpoin.js\jquery.min.js"></script>
+            <script src="static\js\tukarpoin.js\jquery.scrolly.min.js"></script>
+            <script src="static\js\tukarpoin.js\jquery.dropotron.min.js"></script>
+            <script src="static\js\tukarpoin.js\jquery.scrollex.min.js"></script>
+            <script src="static\js\tukarpoin.js\browser.min.js"></script>
+            <script src="static\js\tukarpoin.js\breakpoints.min.js"></script>
+            <script src="static\js\tukarpoin.js\util.js"></script>
+            <script src="static\js\tukarpoin.js\main.js"></script>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="{% static 'js\addvoucher.js' %}"></script>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>REDEEM</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css\tukarpoin.css' %}" />
+    <noscript><link rel="stylesheet" href="{% static 'css\nonscriptTukarPoin.css' %}" /></noscript>
+
+</head>
+
+<body>
+    <div id="page-wrapper">
+        <header id="header">
+            <h1 id="logo"><a href="{% url 'tukarpoin:tukarpoin' %}">HOME</a></h1>
+            <nav id="nav">
+                <ul>
+                    <li><a href="{% url 'tukarpoin:add' %}">add voucher for BANK USER</a></li>
+                    <li><a href="{% url 'tukarpoin:mine' %}">my voucher</a></li>
+                    <li><a href="{% url 'accounts:logout' %}" class="button primary">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="main" class="wrapper style1">
+            <div class="container">
+                <header class="major">
+                    <h2>Add Vouchers</h2>
+                </header>
+
+                <!-- Content -->
+                <section>
+                    <h3>Form</h3>
+                    <form method="POST" action="{% url 'tukarpoin:tukarpoin' %}">
+                        {% csrf_token %}
+                        <div class="row gtr-uniform gtr-50">
+                            <div class="col-6 col-12-xsmall">
+                                <input type="text" name="vouchername" id="name" value="" placeholder="Voucher Name" />
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <input type="text" name="requiredpoin" id="name" value="" placeholder="Poin required" />
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <input type="text" name="available_voucher" id="name" value="" placeholder="Available voucher" />
+                            </div>
+                            <div class="col-12">
+                                <textarea name="voucherbody" id="message" placeholder="Enter voucher description" rows="6"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <select name="areaavailable" id="category">
+                                    <option value="">- Area available -</option>
+                                    <option value="">Pick your domicile...</option>
+                                    <option value="Aceh">Aceh</option>
+                                    <option value="Bali">Bali</option>
+                                    <option value="Bangka Belitung">Bangka Belitung</option>
+                                    <option value="Banten">Banten</option>
+                                    <option value="Bengkulu">Bengkulu</option>
+                                    <option value="Central Java">Central Java</option>
+                                    <option value="Central Kalimantan">Central Kalimantan</option>
+                                    <option value="Central Papua">Central Papua</option>
+                                    <option value="Central Sulawesi">Central Sulawesi</option>
+                                    <option value="East Kalimantan">East Kalimantan</option>
+                                    <option value="East Nusa Tenggara">East Nusa Tenggara</option>
+                                    <option value="Gorontalo">Gorontalo</option>
+                                    <option value="Highland Papua">Highland Papua</option>
+                                    <option value="Capital Special Region of Jakarta">Capital Special Region of Jakarta</option>
+                                    <option value="Jambi">Jambi</option>
+                                    <option value="Lampung">Lampung</option>
+                                    <option value="Maluku">Maluku</option>
+                                    <option value="North Kalimantan">North Kalimantan</option>
+                                    <option value="North Maluku">North Maluku</option>
+                                    <option value="North Sulawesi">North Sulawesi</option>
+                                    <option value="North Sumatra">North Sumatra</option>
+                                    <option value="Papua">Papua</option>
+                                    <option value="Riau">Riau</option>
+                                    <option value="Riau Islands">Riau Islands</option>
+                                    <option value="Southeast Sulawesi">Southeast Sulawesi</option>
+                                    <option value="South Kalimantan">South Kalimantan</option>
+                                    <option value="South Papua">South Papua</option>
+                                    <option value="South Sulawesi">South Sulawesi</option>
+                                    <option value="South Sumatra">South Sumatra</option>
+                                    <option value="West Java">West Java</option>
+                                    <option value="West Kalimantan">West Kalimantan</option>
+                                    <option value="West Nusa Tenggara">West Nusa Tenggara</option>
+                                    <option value="West Papua">West Papua</option>
+                                    <option value="West Sulawesi">West Sulawesi</option>
+                                    <option value="West Sumatra">West Sumatra</option>
+                                    <option value="Special Region of Yogyakarta">Special Region of Yogyakarta</option>
+                                </select>
+                            </div>         
+                            <div class="col-6 col-12-xsmall">
+                                <label align="right" for="example">Expired at:</label>
+                            </div>  
+                            <div class="input-with-post-icon datepicker col-6 col-12-xsmall">
+                                <input name="expired_date" placeholder="Select date" type="date" id="example" class="form-control">
+                            </div>               
+                            <div class="col-12">
+                                <ul class="actions">
+                                    <li><button class="submit primary">Submit</button></li>
+                                    <li><input type="reset" value="Reset" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
+            <footer id="footer">
+                <ul class="icons">
+                    <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="#" class="icon solid alt fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Project Mid Term PBP</li><li>GitHub: loraglori</li>
+                </ul>
+            </footer>
+
+        <!-- Scripts -->
+            <script src="static\js\tukarpoin.js\jquery.min.js"></script>
+            <script src="static\js\tukarpoin.js\jquery.scrolly.min.js"></script>
+            <script src="static\js\tukarpoin.js\jquery.dropotron.min.js"></script>
+            <script src="static\js\tukarpoin.js\jquery.scrollex.min.js"></script>
+            <script src="static\js\tukarpoin.js\browser.min.js"></script>
+            <script src="static\js\tukarpoin.js\breakpoints.min.js"></script>
+            <script src="static\js\tukarpoin.js\util.js"></script>
+            <script src="static\js\tukarpoin.js\main.js"></script>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="{% static 'js\addvoucher.js' %}"></script>
+
+    </div>
+</body>
+
+</html>
