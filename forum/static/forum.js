@@ -32,9 +32,9 @@ function getCard(task) {
                     <p>${task.fields.body}</p>
                 </div>
                 <div class ="content-reply">
-                    <nav class="navbar navbar-light bg-light">
-                    <a class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-reply">Add Your Questions</a>
-                    </nav>
+                    
+                    <a class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-reply">Add Your Answer</a>
+                    
                 </div>
             </div>
         </div>
@@ -43,12 +43,8 @@ function getCard(task) {
     return item;
 }
 
-async function getReply() {
-    $.getJSON("answerJson", function(data) {
-        var questionHTML = '';
-        $.each(data, function (key, task) {
-            questionHTML += getCardReply(task);
-        });
-        document.getElementById("content-reply").innerHTML = questionHTML;
-    })
+function submitNewTask(taskForm) {
+    $.post("addQuestion", $(taskForm).serialize(), function(data){
+        document.getElementById("content").innerHTML += getCard(data[0]);
+    });
 }

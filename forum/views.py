@@ -13,7 +13,7 @@ def addQuestion(request):
         body = request.POST.get('body')
         newQuestion = Question(user=request.user, title=title, body = body, date= datetime.now())
         newQuestion .save()
-        return HttpResponse(b"CREATED", status=20)
+        return HttpResponse(serializers.serialize("json",[newQuestion]), content_type="application/json")
     return HttpResponseNotFound()
 
 @login_required(login_url='accounts:login')
@@ -29,8 +29,8 @@ def questionJson(request):
     questions = Question.objects.all()
     return HttpResponse(serializers.serialize('json', questions), content_type='application/json')
 
-def answerJson(request, id):
-    answer = Answer.objects.filter(id)
+def answerJson(request):
+    answer = Answer.objects.all()
     return HttpResponse(serializers.serialize('json', answer), content_type='application/json')
 
 def homePage(request):
