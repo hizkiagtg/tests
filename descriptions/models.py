@@ -16,5 +16,5 @@ class UploadDesc(forms.ModelForm):
         exclude = ['waste_bank']
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}),
-            'description': forms.Textarea(attrs={'rows': 4}),
+            'description': forms.Textarea(attrs={'rows': 2}),
         }

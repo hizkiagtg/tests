@@ -58,11 +58,22 @@ function getCard(task) {
                     <strong>at ${task.fields.created_at} </strong> 
                     <p>${task.fields.body}</p>
                 </div>
-                <a class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-reply">Answer This Question</a>
-                <div id = "reply"> </div>
+
+                <div class ="content-reply">
+                    
+                    <a class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-reply">Add Your Answer</a>
+                    
+                </div>
+
             </div>
         </div>
     </div>
     `
     return item;
+}
+
+function submitNewTask(taskForm) {
+    $.post("addQuestion", $(taskForm).serialize(), function(data){
+        document.getElementById("content").innerHTML += getCard(data[0]);
+    });
 }
