@@ -15,20 +15,20 @@ from .forms import *
 
 def main(request):
     if (request.user.is_authenticated):
-        return render(request, "main.html")
+        return HttpResponseRedirect(reverse('leaderboard:home_user_login'))
     else:
         return HttpResponseRedirect(reverse('accounts:login'))
     
 
 def signup(request):
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('accounts:main'))
+        return HttpResponseRedirect(reverse('leaderboard:home_user_login'))
     return render(request, "signup.html")
 
 # Handle sign up form and create User with a spesific role (group).
 def regular_signup(request):
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('accounts:main'))
+        return HttpResponseRedirect(reverse('leaderboard:home_user_login'))
     
     if request.method == "POST":
         form = RegularSignUpForm(request.POST)
@@ -73,7 +73,7 @@ def regular_signup(request):
 
 def bank_signup(request):
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('accounts:main'))
+        return HttpResponseRedirect(reverse('leaderboard:home_user_login'))
     
     if request.method == "POST" and is_ajax:
         form = BankSignUpForm(request.POST)
@@ -110,12 +110,10 @@ def bank_signup(request):
     return render(request, "signup.html", context)
 
 def login_user(request):
-    # Excecuted when User submit the form.
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('accounts:main'))
+        return HttpResponseRedirect(reverse('leaderboard:home_user_login'))
 
     if request.method == 'POST':
-        # Authenticate User based on username and password.
         user_input = request.POST['email']
 
         try:
@@ -127,18 +125,15 @@ def login_user(request):
 
         user = authenticate(request, email=email, password=password)
 
-        # Executed when User is valid. Redirect to home page.
         if user is not None:
             login(request, user)
-            response = redirect('accounts:main')
+            response = redirect('leaderboard:home_user_login')
             response.set_cookie('last_login', str(datetime.datetime.now())) # membuat cookie last_login dan menambahkannya ke dalam response
             return response
 
-        # Executed when User is not valid. Redirect to login page.
         else:
             messages.success(request, 'Invalid login. Please try again!')
 
-    # Rendering login.html.
     return render(request, "login.html")
 
 def logout_user(request):
