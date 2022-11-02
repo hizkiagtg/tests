@@ -23,10 +23,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#! ">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Forum</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../forum">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#contact">Contact</a></li>
                         <li class="nav-item"><button><a class="nav-link" href="{% url 'accounts:logout'%}">Logout</a></button></li>
                     </ul>
                 </div>
@@ -97,7 +97,7 @@
                           <h4 class="card-title">${data[i].fields.name}</h4>
                           <p class="card-text">${data[i].fields.city}</p>
                           <p class="card-text">${data[i].fields.address}</p>
-                          <div class="d-grid"><a class="btn btn-outline-primary" href="http://localhost:8000/descriptions/details/${data[i].pk}'>">See more!</a></div>
+                          <div class="d-grid"><a class="btn btn-outline-primary" href="http://localhost:8000/descriptions/details/${data[i].pk}">See more!</a></div>
                           </div>
                         </div>
                       </div>`)

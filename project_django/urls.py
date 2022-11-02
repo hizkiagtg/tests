@@ -24,5 +24,5 @@ urlpatterns = [
     path('sumbang/', include('buat_sumbangan.urls')),
     path('descriptions/', include('descriptions.urls')),
     path('forum/', include('forum.urls')),
-    path('', include('leaderboard.urls')),
+    path('leaderboard/', include('leaderboard.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
