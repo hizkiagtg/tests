@@ -16,13 +16,11 @@ class Question(models.Model):
 
 class Answer(models.Model):
     user = models.ForeignKey(User, null=False, on_delete = models.CASCADE)
-    question = models.ForeignKey(Question, null=False, on_delete = models.CASCADE, related_name='responses')
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete = models.CASCADE)
     body = models.TextField(null=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title 
+        return self.body
 
     def get_responses(self):
         return Answer.objects.filter(parent=self)

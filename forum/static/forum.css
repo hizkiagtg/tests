@@ -7,6 +7,11 @@ body {
     background: rgb(174, 238, 193);
     background: radial-gradient(circle, #92ac9b 0%, #bacec1 50%, #f6f4e8 100%);
 }
+
+#id2 {
+
+    background: rgb(65, 190, 148);
+}
 .navbar {
     min-height: 90px;
   }
@@ -15,4 +20,11 @@ body {
     padding-right: 20px;
     padding-left: 20px;
     padding-bottom: 20px;
+}
+
+.modal-backdrop {
+
+    background: rgb(174, 238, 193);
+    background: radial-gradient(circle, #92ac9b 0%, #bacec1 50%, #f6f4e8 100%);
+
 }

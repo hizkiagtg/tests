@@ -20,20 +20,21 @@
     </head>
     <body>
         <!-- Responsive navbar-->
+        <link href="../../static/style.css" rel="stylesheet" />
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-5">
                 <a class="navbar-brand" href="#!">Wazzt</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'leaderboard:home_user_login' %} ">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Forum</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../leaderboard">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../forum">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href= "{% url 'leaderboard:show_leaderboard' %} ">Leaderboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../leaderboard/leaderboard">Leaderboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Tukar Poin</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'buat_sumbangan:show_history' %}">History</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../sumbang/history">Riwayat</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#contact">Contact</a></li>
                         <li class="nav-item"><button><a class="nav-link" href="{% url 'accounts:logout'%}">Logout</a></button></li>
                     </ul>
                 </div>
@@ -41,27 +42,24 @@
         </nav>
         <!-- Header-->
         <header>
-                <img src="test1.jpg" class="image">
-                <!-- <div class="bg-dark py-5">
-                    <div class="container px-5"> -->
+                <img src="../../static/test1.jpg" class="image">
                     
-                        <div class="row gx-5 justify-content-center">
+                        <div class="row gx-5 justify-content-center"  >
                             <div class="col-lg-6">
-                                <div class="centered text-center my-5">
-                                    <h1 class="display-5 fw-bolder text-black mb-2">Wazzt</h1>
-                                    <p class="lead fw-bolder text-black-50 mb-4">Website bank sampah dengan harapan dapat mengatasi permasalahan sampah di Indonesia dengan memotivasi masyarakat untuk memilah sampah.  </p>
+                                <div class="centered text-center my-5" >
+                                    <h1 class="display-5 fw-bolder text-black mb-2" style="justify-content: flex-end; ">Wazzt</h1>
+                                    <p class="lead fw-bolder text-black-50 mb-4" style="justify-content: flex-end; ">Website bank sampah dengan harapan dapat mengatasi permasalahan sampah di Indonesia dengan memotivasi masyarakat untuk memilah sampah.  </p>
                                     
                                 </div>
                             </div>
                         </div>
-                    </div>
         </header>
         <!-- About Us-->
-        <section class="bg-light"> 
-            <div class="container px-5">
+        <section class="bg-light" > 
+            <div class="container px-5" >
                 <div class="row">
                     <div class="col">
-                        <div class="my-5">
+                        <div class="my-5" >
                             <h2 class="display-5 fw-bolder text-black mb-2" id ="about">About Us</h2>
                             <p class="lead text-black-50 mb-4">Permasalahan sampah di Indonesia yang semakin buruk. Data menunjukkan, bahwa setiap tahunnya dihasilkan 2.12 miliar ton sampah, yang 33% darinya tidak diolah dengan baik dan mengganggu lingkungan. Banyak hewan-hewan yang terganggu lingkungan hidupnya karena sampah, yang mengakibatkan kematian bagi hewan-hewan tersebut. Sampah-sampah yang menumpuk pada udara terbuka dan tidak diolah dengan baik menghasilkan gas metana yang merupakan salah satu gas yang dapat menjadi salah satu faktor terjadinya perubahan iklim yang ekstrim sehingga berdampak juga terhadap pemanasan global.</p>
                             <p class="lead text-black-50 mb-4">Oleh karena itu, Wazzt hadir dengan menyediakan sistem point reward dan leaderboard yang dapat menjadi motivasi masyrakat untuk ikut dalam pengelolaan sampah yang lebih baik.</p>
@@ -80,30 +78,14 @@
                 </div>
             </div>
         </div>
-            <!-- show notification -->
-    <div>
-        <div class="container" style="margin-top:30px; justify-content: center;"></div>
-          <div class="container" style="margin-top: 40px; display: flex; margin-bottom: 40px; padding-left: 40px; padding-right: 40px;">
-            <div class="container">
-              <div class="row" style="justify-content: flex-end; " id="bismillah-container" >
-              </div>
-            </div>
-          </div> 
-        </div>
-      </div>
-    
-    
-    
-                
         <!-- Daftar Bank Sampah-->
         <section class="bg-white py-5 border-bottom">
 
             <div class="container px-5 my-5">
                 <div class="text-center mb-5">
                     <h2 class="display-5 fw-bolder text-black mb-2">Daftar bank sampah</h2>
-                    <p class="lead mb-0">With our no hassle pricing plans</p>
                 </div>
-            <div class="cards">
+            <div class="cards"  >
                 <div class="container" >
                 </div>
             </div>
@@ -119,7 +101,7 @@
                           <h4 class="card-title">${data[i].fields.name}</h4>
                           <p class="card-text">${data[i].fields.city}</p>
                           <p class="card-text">${data[i].fields.address}</p>
-                          <div class="d-grid"><a class="btn btn-outline-primary" href="#! ">See more!</a></div>
+                          <div class="d-grid"><a class="btn btn-outline-primary" href="http://localhost:8000/descriptions/details/${data[i].pk} ">See more!</a></div>
                           </div>
                         </div>
                       </div>`)

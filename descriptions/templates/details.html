@@ -11,30 +11,70 @@
 {% endblock meta %}
 
 {% block content %}
+{% if accessor.is_regular %}
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #bacec1;">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#!">Wazzt</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../leaderboard">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../forum">Forum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/leaderboard">Leaderboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Tukar Poin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../sumbang/history">Riwayat</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#contact">Contact</a></li>
+                    <li class="nav-item"><button><a class="nav-link" href="{% url 'accounts:logout'%}">Logout</a></button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+{% else %}
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #bacec1;">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#!">Wazzt</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#! ">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../forum">Forum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#contact">Contact</a></li>
+                    <li class="nav-item"><button><a class="nav-link" href="{% url 'accounts:logout'%}">Logout</a></button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+{% endif %}
 
 <section class="full-width gradient-background d-flex align-items-center">
     <div class="container-fluid mx-4">
         <div class="row g-0">
             <div class="col d-flex flex-column justify-content-center align-items-start mx-2" style="min-height: 100vh;">
                 <div id="basic" class="px-5">
-                    <h1 style="color: #1d3124; text-align: left; text-shadow: none;">{{ info.name }}</h1>
+                    <h1 class="text-capitalize" style="color: #1d3124; text-align: left; text-shadow: none;">{{ info.name }}</h1>
                     <small>{{ info.city }} - {{ info.email }}</small>
                 </div>
 
                 <div id="page-buttons" class="px-5">
-                    {% if accessor.is_bank %}
-                        <a href="{% url 'descriptions:desc_json' %}" class="btn btn-outline-danger btn-sm my-3" role="button">Back to Home</a>
+                    {% if accessor.is_regular %}
+                        <a href="/sumbang/{{info.id}}" class="btn btn-outline-success btn-sm my-3" role="button">Donate Waste</a>
+                        <a href="{% url 'leaderboard:home_user_login' %}" class="btn btn-outline-danger btn-sm my-3" role="button">Back to Home</a>
 
                     {% else %}
-                        <a href="/sumbang/{{info.id}}" class="btn btn-outline-success btn-sm my-3" role="button">Donate Waste</a>
-                        <a href="{% url 'descriptions:desc_json' %}" class="btn btn-outline-danger btn-sm my-3" role="button">Back to Home</a>
+                        <a href="{% url 'leaderboard:home_user_login' %}" class="btn btn-outline-danger btn-sm my-3" role="button">Back to Home</a>
                     
                     {% endif %}
                 </div>
             </div>
             
             <div class="col d-flex justify-content-center align-items-center mx-2" style="min-height: 100vh;">
-                <div id="carouselExampleCaptions" class="carousel slide carousel-dark" data-bs-ride="false" style="min-width: 300px;">
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false" style="min-width: 300px;">
                     <div id="desc-carousel" class="carousel-inner" style="width: 100%;">
 
                     </div>
@@ -58,6 +98,7 @@
     loadCarousel()
 
     async function loadCarousel() {
+        var carousel = document.getElementById('carouselExampleCaptions')
         var wrapper = document.getElementById('desc-carousel')
         wrapper.innerHTML = ''
         
@@ -69,6 +110,11 @@
             console.log('data:', data)
             
             var desc = data
+
+            if (Object.keys(desc).length == 0) {
+                carousel.innerHTML = ''
+            }
+            
             for(var i in desc) {
                 var status = "carousel-item"
                 if(i == 0) {
@@ -76,12 +122,12 @@
                 }
 
                 var slide = `
-                <div class="${status}">
-                    <img src="/media/${desc[i].image}" class="img-fluid d-block w-100" alt="desc-cover ${i}" style="height: 65vh; border-radius: 1rem;">
+                <div class="${status}" style="background: black; border-radius: 1rem;">
+                    <img src="/media/${desc[i].image}" class="img-fluid d-block w-100 opacity-75" alt="desc-cover ${i}" style="height: 65vh; border-radius: 1rem;">
                     <div class="carousel-caption d-block d-md-block">
-                    <h5>${desc[i].title}</h5>
-                    <p>${desc[i].description}</p>
-                    <small>${desc[i].date}</small>
+                    <h5 style="color: whitesmoke;">${desc[i].title}</h5>
+                    <p style="color: whitesmoke;">${desc[i].description}</p>
+                    <small style="color: whitesmoke;">${desc[i].date}</small>
                     </div>
                 </div>`
 
