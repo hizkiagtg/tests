@@ -45,28 +45,23 @@
             font-weight: 500;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif !important;
-            ;
-        }
-
         button {
             font-weight: 500;
         }
     </style>
+    {% include "navbar_non.html" %}
 
 </head>
 
 <body class="body1">
-
-    <div class="vh-100 d-flex justify-content-center align-items-center mt-3">
-        <div class="row row-cols-md-2 mx-auto" style="width: 95%">
+    <div class="d-flex justify-content-center align-items-center mt-3">
+        <div class="row row-cols-md-2 row-cols-sm-2 mx-auto" style=" width: 95%;">
             <div class="col mb-2">
-                <div class="card text-center mt-3 mb-3 mx-3 shadow">
-                    <img src="https://img.freepik.com/free-vector/waste-sorting-concept_74855-7934.jpg?w=996&t=st=1667068973~exp=1667069573~hmac=017424da510c4191fd25b0e60bbb946a4ae34410dd55cc90c2328c3bb30d9d2d"
-                        class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
-                        alt="Sample photo">
+                <div class="card text-center mt-3 mb-3 mx-3 shadow" style="display: flex;">
                     <div class="card-body">
+                        <img src="https://img.freepik.com/free-vector/waste-sorting-concept_74855-7934.jpg?w=996&t=st=1667068973~exp=1667069573~hmac=017424da510c4191fd25b0e60bbb946a4ae34410dd55cc90c2328c3bb30d9d2d"
+                            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                            alt="Sample photo">
                         <p style="text-align: center">
                             <a class="btn btn-dark m-3 stretched-link" role="button"
                                 style="font-size: 14.5px; font-weight: 500; border-radius: 25px; padding: 0.5rem 2rem"
@@ -77,11 +72,11 @@
                 </div>
             </div>
             <div class="col mb-2">
-                <div class="card text-center mt-3 mb-3 mx-3 shadow">
-                    <img src="https://img.freepik.com/free-vector/people-loading-garbage-into-truck-trash-pickup-with-recycling-sign-flat-vector-illustration-garbage-disposal-volunteering-trash-collection_74855-13197.jpg?w=996&t=st=1667069270~exp=1667069870~hmac=58713ccb0745c69cb8d8ce29b346dbe19680aed7a8dc9733cb670bdc9b29666c"
-                        class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
-                        alt="Sample photo">
+                <div class="card text-center mt-3 mb-3 mx-3 shadow" style="display: flex;">
                     <div class="card-body">
+                        <img src="https://img.freepik.com/free-vector/people-loading-garbage-into-truck-trash-pickup-with-recycling-sign-flat-vector-illustration-garbage-disposal-volunteering-trash-collection_74855-13197.jpg?w=996&t=st=1667069270~exp=1667069870~hmac=58713ccb0745c69cb8d8ce29b346dbe19680aed7a8dc9733cb670bdc9b29666c"
+                            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                            alt="Sample photo">
                         <p style="text-align: center">
                             <a class="btn btn-dark m-3 stretched-link" role="button"
                                 style="font-size: 14.5px; font-weight: 500; border-radius: 25px; padding: 0.5rem 2rem"
@@ -92,6 +87,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <datalist id="cities"></datalist>
@@ -182,7 +178,7 @@
                                         style="padding-top: 1rem; padding-bottom: 0rem;font-size:13px; height: 3rem; line-height: 1.5;">
                                     </select>
                                     <label for="select1">Domisili
-                                        
+
                                     </label>
                                 </div>
                             </div>
@@ -215,7 +211,6 @@
                             onclick="bankSignUp();">Sign
                             Up</button>
                     </div>
-                    <!-- <button class="btn btn-md btn-success" id="bank-button" type="submit" onclick="bankSignUp();">Sign Up</button> -->
                 </div>
 
             </div>
@@ -365,18 +360,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- 
-                        <div class="col-md-12 mb-3">
-                            <div class="input-group">
-                                <div class="form-floating">
-                                    <input list="cities" type="text" name="city" id="inputCity2" class="form-control"
-                                        autocomplete="off" placeholder="Domisili" onchange="resetIfInvalid(this);">
-                                    <label for="city">Domisili</label>
-                                </div>
-                            </div>
-                        </div> -->
-
                     </form>
+
                     <div class="col-md-12 text-center">
                         <p class="align-self-center mt-4">
                             Sudah punya akun? <a href="../login/">Login di sini</a>
@@ -396,7 +381,7 @@
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
     <script src="{% static 'js/accounts.js' %}"></script>
-    
+
 </body>
 {% endblock content %}
 

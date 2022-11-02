@@ -30,24 +30,15 @@
             font-size: 14px;
             font-weight: 450;
         }
-
     </style>
-    <script>
-        $(window).load(function() {
-            $('login-form').get(0).reset(); //clear form data on page load
-        });
-        // $('login-form').each(function() {
-        //     this.reset();
-        // });
-        // $(window).load(function() {
-        //     $('login-form').reset(); //clear form data on page load
-        // });
-    </script>
+
+    {% include "navbar_non.html" %}
+    
 </head>
 
 <body class="body1"> 
         <div class = "container-fluid vh-100 d-flex justify-content-center align-items-center">
-            <div class="card text-center mx-2 m-10 shadow" style="width: 20rem">
+            <div class="card text-center mx-2 shadow" style="width:20rem; display: flex">
                 <div class="card-body" style="font-weight: 500">
                     <h4 class="card-title mt-3 mb-4 fw-bold">Login</h4>
                     <form method="POST" action="" id="login-form">
