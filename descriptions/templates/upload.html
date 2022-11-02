@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'descriptions/css/upload.css' %}">
+{% endblock %}
+
+{% block meta %}
+<title>Upload Description</title>
+{% endblock meta %}
+
+{% block content %}
+
+<section class = "full-width d-flex justify-content-center align-items-center">
+    <div class="container-fluid d-flex justify-content-center align-items-center w-50">
+        <div class="card border-0 w-75" style="border-radius:2rem ; background-color:white ;">
+            <div class="row g-0">
+                <div class="card-body mx-3">
+                    <h2 class="card-title mb-5 mt-3" style="text-align: center;">Upload Description</h2>
+                    <form class="ml-3" method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        {{form|crispy}}
+                        
+                        <button type="submit" class="btn btn-outline-primary w-100 mb-3" value="Upload Description">Upload Description</button>
+                    
+                    </form>
+
+                    <!-- <form id="form" class="ml-3" onsubmit="return false;">
+                        {% csrf_token %}
+                        
+                        {{form|crispy}}
+                        
+                        <button type="submit" class="btn btn-outline-primary w-100 mb-3" value="Upload Description">Upload Description</button>
+                    
+                    </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function uploadDesc() {
+        fetch("{% url 'descriptions:upload_desc' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(console.log("uploaded!"))
+
+        return false
+    }
+</script>
+
+{% endblock content %}
