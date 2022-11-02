@@ -55,3 +55,9 @@ body {
 .card:hover{
     transform: scale(1.03);
 }
+
+@media(max-height: 500px){
+    .card {
+        margin-top: 1rem;
+   }
+}
