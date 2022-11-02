@@ -52,11 +52,11 @@ def add_donasi(request, id_bank):
             new_donasi.save()
             user.save()
 
-            return JsonResponse({"instance": "Sampah telah disumbang!"}, status=200)
-        
+            HttpResponseRedirect(reverse('accounts:login'))
+
         return render(request, 'form_donasi.html', context)
     else:
-        return HttpResponse("nunggu indri")
+        HttpResponseRedirect(reverse('accounts:login'))
 
 @login_required
 def show_history(request):
