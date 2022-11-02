@@ -1,11 +1,16 @@
 body {
-    background-color: rgb(137, 225, 193);
+    background: rgb(174, 238, 193);
+    background: radial-gradient(circle, #92ac9b 0%, #bacec1 50%, #f6f4e8 100%);
 }
 #id1 {
-    background-color: rgb(137, 225, 193);;
-}
 
-#id2 {
+    background: rgb(174, 238, 193);
+    background: radial-gradient(circle, #92ac9b 0%, #bacec1 50%, #f6f4e8 100%);
+}
+.navbar {
+    min-height: 90px;
+  }
+.pad {
     padding-top: 20px;
     padding-right: 20px;
     padding-left: 20px;
