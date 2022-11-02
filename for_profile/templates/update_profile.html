@@ -1,0 +1,207 @@
+{% load static %} 
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Edit Profile</title>
+        <script src="{% static 'js/update_profile.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/accounts.js' %}" type="text/javascript"></script>
+        <link rel = "stylesheet" href ="{% static 'css/update_profile.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="../../static/style.css" rel="stylesheet" />
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#!">Wazzt</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../leaderboard">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../forum">Forum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/leaderboard">Leaderboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Tukar Poin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../sumbang/history">Riwayat</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#about">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </head>
+
+    <body>
+        {% if user.is_regular %}
+            <form name="edit-reg-form" class="edit-reg-form" method="POST" id="edit-reg-form">
+                {% csrf_token %}
+                <div class="edit-profile-reg">
+                    <div class="pic-reg">
+                        <img src="{% static 'images/user_icon.png' %}" width="200px">
+                    </div>
+                    <h1>Edit Profile</h1>
+
+                    <label for="name-reg">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="name-reg" placeholder="Nama Lengkap" name= "name"   
+                    autocomplete="off" required>
+                    <br>
+
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username-reg" class="form-control" placeholder="Username"
+                        required>
+                    <br>
+                        
+                
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email-reg" placeholder="Email" required>   
+                    <br>    
+                    
+
+                    <label for="age">Umur</label>
+                    <input type="number" name="age" id="age-reg" class="form-control input" placeholder="Umur" 
+                    min="13" max="100" onchange="if(value<13) value=13; if(value>100) value=100;" required>
+                    <br>
+                        
+                    <label for="gender">Jenis Kelamin:</label><br>
+                    <input type="radio" name="gender" id="pria" value="Pria">
+                    <label class="radio-reg" for="pria">Pria</label>
+                        
+                    <input type="radio" name="gender" id="wanita" value="Wanita">
+                    <label class="radio-reg" for="wanita">Wanita</label> 
+                        
+                    <input  type="radio" name="gender" id="tidak" value="Tidak memberi tahu">
+                    <label class="radio-reg" for="tidak">Tidak ingin memberi tahu</label>
+                    <br>
+                        
+                    <label for="city">Domisili:</label>
+                    <select class="form-select form-control" name="city" id="domisili-reg"
+                                aria-label="Default select example" required>
+                            <option value = "Aceh"> Aceh</option>
+                            <option value = "Sumatera Utara"> Sumatera Utara</option>
+                            <option value = "Sumatera Barat"> Sumatera Barat</option>
+                            <option value = "Riau">Riau</option>
+                            <option value = "Kepulauan Riau">Kepulauan Riau</option>
+                            <option value = "Jambi">Jambi</option>
+                            <option value = "Bengkulu">Bengkulu</option>
+                            <option value = "Sumatera Selatan">Sumatera Selatan</option>
+                            <option value = "Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
+                            <option value = "Lampung">Lampung</option>
+
+                            <option value ="Banten">Banten</option>
+                            <option value ="DKI Jakarta">DKI Jakarta</option>
+                            <option value ="Jawa Barat">Jawa Barat</option>
+                            <option value ="Jawa Tengah">Jawa Tengah</option>
+                            <option value ="Daerah Istimewa Yogyakarta">Daerah Istimewa Yogyakarta</option>
+                            <option value ="Jawa Timur">Jawa Timur</option>
+
+                            <option value ="Bali">Bali</option>
+                            <option value ="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                            <option value ="Nusa Tenggara Timur">Nusa Tenggara Timur"</option>
+
+                            <option value ="Kalimantan Barat">Kalimantan Barat</option>
+                            <option value ="Kalimantan Tengah">Kalimantan Tengah</option>
+                            <option value ="Kalimantan Timur">Kalimantan Timur</option>
+                            <option value ="Kalimantan Utara">Kalimantan Utara</option>
+                            <option value ="Kalimantan Selatan">Kalimantan Selatan</option>
+
+                            <option value ="Sulawesi Barat">Sulawesi Barat</option>
+                            <option value ="Sulawesi Selatan">Sulawesi Selatan</option>
+                            <option value ="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                            <option value ="Sulawesi Tengah">Sulawesi Tengah</option>
+                            <option value ="Gorontalo">Gorontalo</option>
+                            <option value ="Sulawesi Utara">Sulawesi Utara</option>
+
+                            <option value ="Maluku Utara">Maluku Utara</option>
+                            <option value ="Maluku">Maluku"</option>
+
+                            <option value ="Papua Barat">Papua Barat</option>
+                            <option value ="Papua">Papua</option>
+                            <option value ="Papua Tengah">Papua Tengah</option> 
+                            <option value ="Papua Pegunungan">Papua Pegunungan</option>
+                            <option value ="Papua Selatan">Papua Selatan</option>
+
+                    </select>    
+                    <br>
+
+                    <button class="btn btn-md btn-primary" id="btn-save-reg" type="submit" onclick="editReg();">Save</button>
+                </div>   
+            </form>
+            
+                
+        {% elif user.is_bank %} 
+            <form name="edit-bank-form" class="edit-bank-form" method="POST" id="edit-bank-form">
+                {% csrf_token %}
+                <div class="edit-profile-bank">
+                    <div class="pic-bank">
+                        <img src="{% static 'images/bank_icon.png' %}" width="200px">
+                    </div>
+                    <h1>Edit Profile</h1>
+
+                    <label for="name">Nama Institusi:</label>
+                    <input type="text" name="name" id="name-bank" class="form-control" autocomplete="off" placeholder="Nama Institusi" required>
+                    <br>
+
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email-bank" class="form-control" placeholder="Email" required autofocus>
+                    <br>
+                    
+
+                    <label for="city">Domisili:</label>
+                    <select class="form-select form-control" name="city" id="domisili-bank"
+                                aria-label="Default select example" required>
+                                <option value = "Aceh"> Aceh</option>
+                                <option value = "Sumatera Utara"> Sumatera Utara</option>
+                                <option value = "Sumatera Barat"> Sumatera Barat</option>
+                                <option value = "Riau">Riau</option>
+                                <option value = "Kepulauan Riau">Kepulauan Riau</option>
+                                <option value = "Jambi">Jambi</option>
+                                <option value = "Bengkulu">Bengkulu</option>
+                                <option value = "Sumatera Selatan">Sumatera Selatan</option>
+                                <option value = "Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
+                                <option value = "Lampung">Lampung</option>
+    
+                                <option value ="Banten">Banten</option>
+                                <option value ="DKI Jakarta">DKI Jakarta</option>
+                                <option value ="Jawa Barat">Jawa Barat</option>
+                                <option value ="Jawa Tengah">Jawa Tengah</option>
+                                <option value ="Daerah Istimewa Yogyakarta">Daerah Istimewa Yogyakarta</option>
+                                <option value ="Jawa Timur">Jawa Timur</option>
+    
+                                <option value ="Bali">Bali</option>
+                                <option value ="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                                <option value ="Nusa Tenggara Timur">Nusa Tenggara Timur"</option>
+    
+                                <option value ="Kalimantan Barat">Kalimantan Barat</option>
+                                <option value ="Kalimantan Tengah">Kalimantan Tengah</option>
+                                <option value ="Kalimantan Timur">Kalimantan Timur</option>
+                                <option value ="Kalimantan Utara">Kalimantan Utara</option>
+                                <option value ="Kalimantan Selatan">Kalimantan Selatan</option>
+    
+                                <option value ="Sulawesi Barat">Sulawesi Barat</option>
+                                <option value ="Sulawesi Selatan">Sulawesi Selatan</option>
+                                <option value ="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                                <option value ="Sulawesi Tengah">Sulawesi Tengah</option>
+                                <option value ="Gorontalo">Gorontalo</option>
+                                <option value ="Sulawesi Utara">Sulawesi Utara</option>
+    
+                                <option value ="Maluku Utara">Maluku Utara</option>
+                                <option value ="Maluku">Maluku"</option>
+    
+                                <option value ="Papua Barat">Papua Barat</option>
+                                <option value ="Papua">Papua</option>
+                                <option value ="Papua Tengah">Papua Tengah</option> 
+                                <option value ="Papua Pegunungan">Papua Pegunungan</option>
+                                <option value ="Papua Selatan">Papua Selatan</option>
+                    </select>    
+                    <br>
+                    
+                    <label for="address">Alamat Lengkap:</label>
+                    <textarea id="address-bank" name="address" placeholder="Address" required></textarea>
+                    <br>
+
+                    <button class="btn btn-md btn-primary" id="btn-save-bank" type="submit" onclick="editBank();">Save</button>
+            </form>
+        {% endif %}
+    </body>
+</html>
