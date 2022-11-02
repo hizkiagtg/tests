@@ -29,6 +29,10 @@ def home_user_login(request):
     elif user.is_bank:
         return render(request, 'user_bank.html')
 
+def all_json(request):
+    user = User.objects.all()
+    return HttpResponse(serializers.serialize('json', user), content_type='application/json')
+
 def user_json(request):
     user = User.objects.filter(is_regular=True)
     return HttpResponse(serializers.serialize('json', user), content_type='application/json')

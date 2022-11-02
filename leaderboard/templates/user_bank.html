@@ -22,11 +22,11 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'leaderboard:home_user_login' %} ">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Forum</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#! ">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../forum">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#contact">Contact</a></li>
                         <li class="nav-item"><button><a class="nav-link" href="{% url 'accounts:logout'%}">Logout</a></button></li>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@
         </nav>
         <!-- Header-->
         <header>
-                <img src="test1.jpg" class="image">
+                <img src="../../static/test1.jpg" class="image">
                 <!-- <div class="bg-dark py-5">
                     <div class="container px-5"> -->
                     
@@ -80,7 +80,6 @@
             <div class="container px-5 my-5">
                 <div class="text-center mb-5">
                     <h2 class="display-5 fw-bolder text-black mb-2">Daftar bank sampah</h2>
-                    <p class="lead mb-0">With our no hassle pricing plans</p>
                 </div>
             <div class="cards">
                 <div class="container" >
@@ -98,7 +97,7 @@
                           <h4 class="card-title">${data[i].fields.name}</h4>
                           <p class="card-text">${data[i].fields.city}</p>
                           <p class="card-text">${data[i].fields.address}</p>
-                          <div class="d-grid"><a class="btn btn-outline-primary" href="#! ">See more!</a></div>
+                          <div class="d-grid"><a class="btn btn-outline-primary" href="http://localhost:8000/descriptions/details/${data[i].pk}">See more!</a></div>
                           </div>
                         </div>
                       </div>`)
