@@ -7,27 +7,23 @@ from forum.forms import  NewResponseForm, NewReplyForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.http import HttpResponseNotFound
 
-
+@login_required(login_url='accounts:login')
 def addQuestion(request):
     if request.method == "POST":
         title = request.POST.get('title')
         body = request.POST.get('body')
-        newQuestion = Question(user=request.user, title=title, body = body, date=datetime.now())
+        newQuestion = Question(user=request.user, title=title, body = body, date= datetime.now())
         Question.save()
         return HttpResponse(b"CREATED", status=20)
     return HttpResponseNotFound()
 
-def get_question(request):
-    questions = Question.objects.filter(user=request.user)
+def questionJson(request):
+    questions = Question.objects.all()
     return HttpResponse(serializers.serialize('json', questions), content_type='application/json')
 
 def homePage(request):
     questions = Question.objects.all().order_by('-created_at')
-    context = {
-        'questions': questions
-    }
-    return render(request, 'forum.html', context)
-
+    
 def questionPage(request, id):
     response_form = NewResponseForm()
     reply_form = NewReplyForm()
@@ -53,7 +49,7 @@ def questionPage(request, id):
     return render(request, 'question.html', context)
 
 
-#@login_required(login_url='register')
+@login_required(login_url='accounts:login')
 def replyPage(request):
     if request.method == 'POST':
         try:

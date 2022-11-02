@@ -1,27 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome page</title>
-
+{% extends 'base.html' %}
+{% load static %}
+{% block meta%}
+    <title>History</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tabel_history.css' %}">
+{% endblock meta%}
+
+{% block content %}
 <div>
-    <h1>Welcome to APAP sample home page!</h1>
-</div>
-<div>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <h1 style="color:black; text-shadow: none; margin-top: 2rem;">Your History</h1>
 </div>
 
-<div>
-
+<div class="container">
 <table id="table_result" class="display" style="width:100%">
     <thead>
     <tr>
@@ -68,6 +61,4 @@
 
     
 </script>
-
-</body>
-</html>
+{% endblock content %}

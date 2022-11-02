@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'descriptions/css/details.css' %}">
+{% endblock %}
+
+{% block meta %}
+<title>Waste Bank Detail</title>
+{% endblock meta %}
+
+{% block content %}
+
+<section class="full-width gradient-background d-flex align-items-center">
+    <div class="container-fluid mx-4">
+        <div class="row g-0">
+            <div class="col d-flex flex-column justify-content-center align-items-start mx-2" style="min-height: 100vh;">
+                <div id="basic" class="px-5">
+                    <h1 style="color: #1d3124; text-align: left; text-shadow: none;">{{ info.name }}</h1>
+                    <small>{{ info.city }} - {{ info.email }}</small>
+                </div>
+
+                <div id="page-buttons" class="px-5">
+                    {% if accessor.is_bank %}
+                        <a href="{% url 'descriptions:desc_json' %}" class="btn btn-outline-danger btn-sm my-3" role="button">Back to Home</a>
+
+                    {% else %}
+                        <a href="/sumbang/{{info.id}}" class="btn btn-outline-success btn-sm my-3" role="button">Donate Waste</a>
+                        <a href="{% url 'descriptions:desc_json' %}" class="btn btn-outline-danger btn-sm my-3" role="button">Back to Home</a>
+                    
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="col d-flex justify-content-center align-items-center mx-2" style="min-height: 100vh;">
+                <div id="carouselExampleCaptions" class="carousel slide carousel-dark" data-bs-ride="false" style="min-width: 300px;">
+                    <div id="desc-carousel" class="carousel-inner" style="width: 100%;">
+
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    loadCarousel()
+
+    async function loadCarousel() {
+        var wrapper = document.getElementById('desc-carousel')
+        wrapper.innerHTML = ''
+        
+        var url = "{% url 'descriptions:desc_json' %}"
+        
+        fetch(url)
+        .then((resp) => resp.json())
+        .then(function(data){
+            console.log('data:', data)
+            
+            var desc = data
+            for(var i in desc) {
+                var status = "carousel-item"
+                if(i == 0) {
+                    status = "carousel-item active"
+                }
+
+                var slide = `
+                <div class="${status}">
+                    <img src="/media/${desc[i].image}" class="img-fluid d-block w-100" alt="desc-cover ${i}" style="height: 65vh; border-radius: 1rem;">
+                    <div class="carousel-caption d-block d-md-block">
+                    <h5>${desc[i].title}</h5>
+                    <p>${desc[i].description}</p>
+                    <small>${desc[i].date}</small>
+                    </div>
+                </div>`
+
+                wrapper.innerHTML += slide
+            }
+
+        })
+    }
+</script>
+
+{% endblock content %}
