@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/form_donasi.css' %}">
+    <title>Form Donasi</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-  <div class="container">
+ 
+  {% include "navbar_all.html" %}
+  <div class="container" id="containerForm">
     <div class="title">Form Donasi Sampah - Bank {{nama}} </div>
     <div class="content">
       <form method="POST" id="post-form">

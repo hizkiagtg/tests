@@ -52,11 +52,11 @@ def add_donasi(request, id_bank):
             new_donasi.save()
             user.save()
 
-            HttpResponseRedirect(reverse('accounts:login'))
+            HttpResponseRedirect(reverse('leaderboard:home_user_login'))
 
         return render(request, 'form_donasi.html', context)
     else:
-        HttpResponseRedirect(reverse('accounts:login'))
+       HttpResponseRedirect(reverse('leaderboard:home_user_login'))
 
 @login_required
 def show_history(request):
