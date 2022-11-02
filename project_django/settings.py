@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'buat_sumbangan',
     'descriptions',
     'for_profile',
+    'tukarpoin',
 ]
 
 MIDDLEWARE = [
