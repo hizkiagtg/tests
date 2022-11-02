@@ -11310,3 +11310,44 @@ textarea.form-control-lg {
   width: 4rem;
   font-size: 2rem;
 }
+
+.cards {
+    
+    margin: 0;
+  padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  } 
+.card {
+    box-sizing: border-box;
+    margin: 0;
+  padding: 0;
+    margin: 20px;
+    padding: 20px;
+    width: 500px;
+    min-height: 200px;
+    display: grid;
+    grid-template-rows: 20px 50px 1fr 50px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s;
+    
+  }
+  /* RESPONSIVE */
+  @media (max-width: 1600px) {
+    .cards {
+      justify-content: center;
+    }
+  }
+  .button{
+      display: inline-block;
+      background-color: white;
+      border-radius: 10px;
+      border: 4px double #cccccc;
+      color: black;
+      text-align: center;
+      font-size: 12px;
+      padding: 11px;
+  }

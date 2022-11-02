@@ -8,14 +8,45 @@ from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.shortcuts import render
-from models import Leaderboard
+from .models import Leaderboard
 from django.core import serializers
 from django.http.response import JsonResponse, HttpResponse
+from accounts.models import *
+from leaderboard.models import *
+from buat_sumbangan.models import *
 
 from django.views.decorators.csrf import csrf_exempt
 
-#@login_required(login_url='/todolist/login/')
+def home_page(request):
+    return render(request, 'user_non.html')
+
+@login_required
+def home_user_login(request):
+    user = request.user
+
+    if user.is_regular:
+        return render(request, 'user_login.html')
+    elif user.is_bank:
+        return render(request, 'user_bank.html')
+
+def user_json(request):
+    user = User.objects.filter(is_regular=True)
+    return HttpResponse(serializers.serialize('json', user), content_type='application/json')
+
 def data_json(request):
-    #perlu pake request.user gasi
-    data = Leaderboard.objects.filter(user=request.user)
+    data = User.objects.filter(is_bank=True)
     return HttpResponse(serializers.serialize('json', data), content_type='application/json')
+
+def show_json_sorted(request):
+    sort = User.objects.filter(is_regular=True).order_by('-weight').only()
+    return HttpResponse(serializers.serialize('json', sort), content_type='application/json')
+
+def show_leaderboard(request):
+    data_user = Leaderboard.objects.all()
+    context = {
+        'list_user': data_user,
+    }
+    return render(request, "leaderboard.html",context)
+
+
+

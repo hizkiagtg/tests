@@ -5,23 +5,26 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'leaderboard:home_user_login' %} ">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">Forum</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
-                <li class="nav-item"><a class="nav-link" href= "{% url 'leaderboard.html'%}">Leaderboard</a></li>
+                <li class="nav-item"><a class="nav-link" href= "#table-leaderboard">Leaderboard</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">Tukar Poin</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Sumbang Sampah</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Riwayat</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'buat_sumbangan:show_history' %}">History</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item"><button><a class="nav-link" href="{% url 'accounts:logout'%}">Logout</a></button></li>
+
             </ul>
         </div>
     </div>
 </nav>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function updateTable(){
-        $.get("data_json/", function(data) {
+        $.get("/leaderboard/show_json_sorted", function(data) {
           // fill table
           for(var i = 0; i < data.length; i++){
             var tr = document.createElement("tr");
@@ -46,18 +49,39 @@
       
       $(document).ready(function(){
         updateTable();
-            $('#example').DataTable({
-                order: [[3, 'desc']],
-            });
         });
+</script>
+
+<script>
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
 </script>
 
 
 
-<div class="p-4">
+<div class="p-4" id="table-leaderboard">
     <h2 class=" text-center display-5 fw-bolder text-black mb-2" >Leaderboard</h2>
-    <input type="text" id="search" placeholder="Enter name..."></input>
-    <table class="table table-bordered">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+    <table class="table table-bordered" id="myTable" >
       <tr>
         <th>Peringkat</th>
         <th>Nama</th>
