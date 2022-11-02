@@ -9,9 +9,10 @@ $(document).on('submit','#post-form',function(e){
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
         },
         dataType: 'json',
-        success:function(json){
+        complete:function(json){
             alert("Donasi Diterima");
             document.getElementById("post-form").reset();
         }
     });
 });
+

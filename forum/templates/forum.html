@@ -4,17 +4,19 @@
 {% block content %}
 <head>
     <link rel="stylesheet" href="{% static 'forum.css' %}">
-    <script src="{% static 'forum.js' %}"></script>
     {% include 'navbar.html' %}
 </head>
-
+<script src="{% static 'forum.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        setup();
+    });
+</script>
 
 <body id = "id1">
-    <div class= "page" style="padding:5%;">
+    <div class= "page" style="padding:8%;">
         <h1 class="title">All questions</h1>
-        <div class = "content">
-            {% include 'question-list.html' %}
-        </div>
+        {% include 'question-list.html' %}
     </div>
 </body>
 
@@ -26,7 +28,7 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Question</h1>
             </div>
             <div class="modal-body">
-                <form id="form" method="POST">
+                <form id="form-submit" method="POST">
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="title" class="col-form-label">Title</label>
