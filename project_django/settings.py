@@ -30,6 +30,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+# Crispy forms configuration
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,9 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'accounts',
     'forum',
     'buat_sumbangan',
+    'descriptions',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +144,10 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Media Files (ImageField)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
