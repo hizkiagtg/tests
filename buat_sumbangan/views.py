@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from buat_sumbangan import *
 import datetime
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from buat_sumbangan.models import *
 from accounts.models import *
+from django.http import JsonResponse
 
 #harus import
 @login_required
@@ -25,6 +26,7 @@ def add_donasi(request, id_bank):
     context = {
         'nama': bank_sampah.name
     }
+    
     if user.is_regular:
         if request.method == "POST":
             
@@ -49,14 +51,14 @@ def add_donasi(request, id_bank):
 
             new_donasi.save()
             user.save()
+            
+            return HttpResponseRedirect(reverse('leaderboard:home_user_login'))
 
-            return HttpResponse({"Berhasil": "Sampah telah disumbang!"}, status=200)
-        
-        return render(request, 'form_donasi_2.html', context)
+        return render(request, 'form_donasi.html', context)
     else:
-        return HttpResponse("nunggu indri")
+        return HttpResponseRedirect(reverse('leaderboard:home_user_login'))
 
-
+@login_required
 def show_history(request):
     return render(request, 'history.html')
 

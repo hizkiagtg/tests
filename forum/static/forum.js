@@ -1,27 +1,68 @@
-async function getQuestions() {
-    return fetch("{% url 'get_question' %}").then((response) => response.json());
+function setup() {
+    $.ajaxSetup({
+        headers: {"X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()}
+    });
+    getQuestion();
 }
-async function refreshTask() {
-document.getElementById("content").innerHTML = "";
-const task = await getTask();
-const content = document.getElementById("content");
-content.innerHTML = "";
-task.forEach((item) => {
-    content.innerHTML += `
+
+async function getQuestion() {
+    $.getJSON("json", function(data) {
+        var questionHTML = '';
+        $.each(data, function (key, task) {
+            questionHTML += getCard(task);
+        });
+        document.getElementById("content").innerHTML = questionHTML;
+    })
+}
+
+async function getReply() {
+    $.getJSON("jsonRep", function(data) {
+        var replyHTML = '';
+        $.each(data, function (key, task) {
+            replyHTML += getReply(task);
+        });
+        document.getElementById("reply").innerHTML = reply;
+    })
+}
+
+function getReply(task) {
+    item = `    
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Accordion Item #1
+            </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+        </div>
+    </div>
+    `
+    return item;
+}
+
+function getCard(task) {
+    item = `    
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                ${item.fields.title}
-            </button>
-        </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <h2 class="accordion-header" id="heading${task.pk}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${task.pk}" aria-expanded="true" aria-controls="collapse${task.pk}">
+                    <img src = "https://cdn-icons-png.flaticon.com/512/1179/1179267.png" width = "50" height = "50">
+                    <h1>${task.fields.title}</h1>
+                </button>
+            </h2>
+            <div id="collapse${task.pk}" class="accordion-collapse collapse show" aria-labelledby="heading${task.pk}" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                <strong>by ${item.fields.author.username} </strong> 
-                <p> ${item.fields.body}</p>
+                    <strong>Asked by ${task.fields.author}</strong> 
+                    <strong>at ${task.fields.created_at} </strong> 
+                    <p>${task.fields.body}</p>
+                </div>
+                <a class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modal-reply">Answer This Question</a>
+                <div id = "reply"> </div>
             </div>
         </div>
     </div>
-    `;
-});
+    `
+    return item;
 }

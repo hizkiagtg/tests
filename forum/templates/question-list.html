@@ -3,30 +3,7 @@
     <link rel="stylesheet" href="{% static 'forum.css' %}">
     <script src="{% static 'forum.js' %}"></script>
 </head>
- 
-
-
-{% for question in questions %}   
-
-
-    <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="heading{{question.id}}">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{question.id}}" aria-expanded="true" aria-controls="collapse{{question.id}}">
-                    {{question.title}}
-                </button>
-            </h2>
-            <div id="collapse{{question.id}}" class="accordion-collapse collapse show" aria-labelledby="heading{{question.id}}" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <strong>Asked by {{question.author.username}}</strong> 
-                    <strong>at {{question.created_at}}</strong> 
-                    <p>{{question.body}}</p>
-                </div>
-                <button type="button" class="btn btn-info">Respond This Thread</button>
-            </div>
-        </div>
-    </div>
-
-
-{% endfor %}
+  
+<div id = "content">
+</div>
 

@@ -1,9 +1,15 @@
 from django.urls import path
-from . import views
+from forum.views import homePage
+from forum.views import addQuestion
+from forum.views import questionJson
+from forum.views import answerJson
+
+
 
 urlpatterns = [
-    path('', views.homePage, name = 'forum'),
-    path('question/<int:id>', views.questionPage, name='question'),
-    path('get_question/', views.get_question, name='get_question'),
+    path('', homePage, name = 'forum'),
+    path('addQuestion/', addQuestion, name='addQuestion'),
+    path('json/', questionJson, name='json'),
+    path('jsonRep/', answerJson, name='jsonRep'),
 
 ]
