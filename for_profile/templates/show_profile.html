@@ -9,14 +9,30 @@
     <link rel = "stylesheet" href ="{% static 'css/show_profile.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    {% include 'navbar_all.html' %}
+    <link href="../../static/style.css" rel="stylesheet" />
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#!">Wazzt</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../leaderboard">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../forum">Forum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/leaderboard">Leaderboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Tukar Poin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../sumbang/history">Riwayat</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#about">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </head>
 
 <body>
-    <!-- {% include 'navbar_all.html' %} -->
     {% if user.is_regular %}
     <main class = "main-container-reg">
-        <!-- <h1> Here's Your Profile</h1> -->
         <div class="container-reg">
             <h1 class="h1-reg"> Here's Your Profile</h1>
             <div class = "show_profile_reg">
@@ -42,7 +58,6 @@
                     
     {% elif user.is_bank %}
     <main class = "main-container-bank">
-        <!-- <h1> Here's Your Profile</h1> -->
         <div class="container-bank">
             <h1 class="h1-bank"> Here's Your Profile</h1>
             <div class = "show_profile_bank">
@@ -58,9 +73,7 @@
                 </div>
 
                 <div class = "edit-profile-bank">
-                    <!-- <h5> Do you want to edit your profile? -->
                     <a href="/for_profile/edit_profile"> Edit here</a>
-                    <!-- </h5> -->
                 </div>
             </div>
         </div>
