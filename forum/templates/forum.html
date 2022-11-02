@@ -15,16 +15,15 @@
 
 <body id = "id1">
     <div class= "page" style="padding:8%;">
-        <h1 class="title">All questions</h1>
         {% include 'question-list.html' %}
     </div>
 </body>
 
 <!-- modal -->
 <div class="modal fade" id="modal-ajax" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" >
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" id = "id2">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Question</h1>
             </div>
             <div class="modal-body">
@@ -48,9 +47,10 @@
 
 <!-- modal -->
 <div class="modal fade" id="modal-reply" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+
+    <div class="modal-dialog" >
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" id = "id2">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Add Your Answer</h1>
             </div>
             <div class="modal-body">
@@ -61,9 +61,11 @@
                         <textarea class="form-control" id="description"  name="description" required></textarea>
                     </div>
                     <input type="submit" id="submit-task" class="btn btn-primary" onclick="submitNewTask(taskForm)"></input>
+
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}

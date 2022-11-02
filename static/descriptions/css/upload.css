@@ -1,56 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
-*{
-  margin: 0;
+* {
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
-  font-family: 'Poppins',sans-serif!important;;
-}
-body {
-    font-family: 'Poppins',sans-serif!important;;
 }
 
-.body1 {
-    background: rgb(237,216,225);
-    background: linear-gradient(-5deg, #f6f4e8 0%, #bacec1 60%, #92ac9b 100%);
-    background-attachment: fixed;
+.full-width {
+  min-height: 100vh;
+  background-color: #1d3124;
 }
 
-.form-floating>.form-control,
-.form-floating>.form-control-plaintext {
-    padding: 0rem 0.75rem;
-    height: calc(2.5rem + 3px);
-    line-height: 1;
-}
-
-.form-floating>label {
-    padding: 0.75rem 0.75rem;
-    font-size: 12.5px;
-    font-weight: 500;
-}
-
-.form-floating>input {
-    font-size: 13px;
-    font-weight: 450;
-}
-.form-floating>select {
-    font-size: 13px;
-}
-.form-floating>select>option {
-    font-size: 13px;
-}
-
-/* Code source: https://ordinarycoders.com/blog/article/codepen-bootstrap-card-hovers */
-
-.card{
-    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
-    cursor: pointer;
-}
-
-.card:hover{
-    transform: scale(1.03);
-}
-
+/* navbar */
 .nav-link {
     display: block;
     padding: 0.5rem 1rem;
@@ -131,12 +90,107 @@ body {
   .nav-justified .nav-item .nav-link {
     width: 100%;
   }
-
+  
+  .tab-content > .tab-pane {
+    display: none;
+  }
+  .tab-content > .active {
+    display: block;
+  }
+  
+  .navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .navbar > .container,
+  .navbar > .container-fluid,
+  .navbar > .container-sm,
+  .navbar > .container-md,
+  .navbar > .container-lg,
+  .navbar > .container-xl,
+  .navbar > .container-xxl {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navbar-brand {
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
   .navbar-nav .nav-link {
     padding-right: 0;
     padding-left: 0;
   }
-
+  .navbar-nav .dropdown-menu {
+    position: static;
+  }
+  
+  .navbar-text {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+  }
+  
+  .navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    transition: box-shadow 0.15s ease-in-out;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .navbar-toggler {
+      transition: none;
+    }
+  }
+  .navbar-toggler:hover {
+    text-decoration: none;
+  }
+  .navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem;
+  }
+  
+  .navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+  }
+  
+  .navbar-nav-scroll {
+    max-height: var(--bs-scroll-height, 75vh);
+    overflow-y: auto;
+  }
+  
   @media (min-width: 576px) {
     .navbar-expand-sm {
       flex-wrap: nowrap;

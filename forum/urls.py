@@ -11,4 +11,5 @@ urlpatterns = [
     path('addAnswer/', addAnswer, name='addAnswer'),
     path('json/', questionJson, name='json'),
     path('answerJson/', answerJson, name='answerJson'),
+
 ]

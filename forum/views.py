@@ -29,8 +29,10 @@ def questionJson(request):
     questions = Question.objects.all()
     return HttpResponse(serializers.serialize('json', questions), content_type='application/json')
 
+
 def answerJson(request):
     answer = Answer.objects.all()
+
     return HttpResponse(serializers.serialize('json', answer), content_type='application/json')
 
 def homePage(request):
@@ -40,5 +42,26 @@ def homePage(request):
     }
     return render(request, 'forum.html', context)
 
+"""
+@login_required(login_url='accounts:login')
+def replyPage(request):
+    if request.method == 'POST':
+        try:
+            form = NewReplyForm(request.POST)
+            if form.is_valid():
+                question_id = request.POST.get('question')
+                parent_id = request.POST.get('parent')
+                reply = form.save(commit=False)
+                reply.user = request.user
+                reply.question = Question(id=question_id)
+                reply.parent = Response(id=parent_id)
+                reply.save()
+                return redirect('/question/'+str(question_id)+'#'+str(reply.id))
+        except Exception as e:
+            print(e)
+            raise
 
+    return redirect('index')
+
+"""
 
