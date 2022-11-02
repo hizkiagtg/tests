@@ -5,14 +5,15 @@ from django.contrib.auth.decorators import login_required
 from .models import Question, Answer
 from django.http import HttpResponseRedirect, HttpResponse
 from django.http import HttpResponseNotFound
+from datetime import datetime
 
 @login_required(login_url='accounts:login')
 def addQuestion(request):
     if request.method == "POST":
         title = request.POST.get('title')
-        body = request.POST.get('body')
-        newQuestion = Question(user=request.user, title=title, body = body, date= datetime.now())
-        newQuestion .save()
+        body = request.POST.get('description')
+        newQuestion = Question(author=request.user, title=title, body = body, created_at= datetime.now())
+        newQuestion.save()
         return HttpResponse(serializers.serialize("json",[newQuestion]), content_type="application/json")
     return HttpResponseNotFound()
 
@@ -20,9 +21,9 @@ def addQuestion(request):
 def addAnswer(request):
     if request.method == "POST":
         body = request.POST.get('body')
-        newAnsewer = Answer(user=request.user, body = body, date= datetime.now())
-        newAnsewer.save()
-        return HttpResponse(b"CREATED", status=20)
+        newAnswer = Answer(user=request.user, body = body, created_at = datetime.now())
+        newAnswer.save()
+        return HttpResponse(serializers.serialize("json",[newAnswer]), content_type="application/json")
     return HttpResponseNotFound()
 
 def questionJson(request):
@@ -41,27 +42,4 @@ def homePage(request):
         'questions': questions
     }
     return render(request, 'forum.html', context)
-
-"""
-@login_required(login_url='accounts:login')
-def replyPage(request):
-    if request.method == 'POST':
-        try:
-            form = NewReplyForm(request.POST)
-            if form.is_valid():
-                question_id = request.POST.get('question')
-                parent_id = request.POST.get('parent')
-                reply = form.save(commit=False)
-                reply.user = request.user
-                reply.question = Question(id=question_id)
-                reply.parent = Response(id=parent_id)
-                reply.save()
-                return redirect('/question/'+str(question_id)+'#'+str(reply.id))
-        except Exception as e:
-            print(e)
-            raise
-
-    return redirect('index')
-
-"""
 
