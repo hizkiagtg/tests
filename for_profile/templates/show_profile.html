@@ -1,0 +1,85 @@
+{% load static %} 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Show Profile</title>
+    <link rel = "stylesheet" href ="{% static 'css/show_profile.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="../../static/style.css" rel="stylesheet" />
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#!">Wazzt</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="../../leaderboard">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../forum">Forum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/leaderboard">Leaderboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Tukar Poin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../sumbang/history">Riwayat</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../leaderboard/user/#about">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</head>
+
+<body>
+    {% if user.is_regular %}
+    <main class = "main-container-reg">
+        <div class="container-reg">
+            <div class = "show_profile_reg">
+                <div class = profilepic-reg>
+                    <img src="{% static 'images/user_icon.png' %}" width="100px">
+                </div>
+                <h1 class="h1-reg"> Here's Your Profile</h1>
+                    
+                <div class = "details-reg"> 
+                    <p id="name-reg">{{user.name}}</p>       
+                    <p id="username-reg">@{{user.username}}</p> 
+                    <p id="email-reg">{{user.email}}</p>                  
+                    <p id="age-reg">{{user.age}} Tahun</p>                         
+                    <p id="gender-reg">Gender - {{user.gender}}</p>                              
+                    <p id="city-reg">{{user.city}}</p>
+                </div>
+
+                <div class = "edit-profile-reg">
+                    <a href="/for_profile/edit_profile">Edit here</a>
+                </div>
+            </div>
+        </div>
+    </main>
+                    
+    {% elif user.is_bank %}
+    <main class = "main-container-bank">
+        <div class="container-bank">
+            <h1 class="h1-bank"> Here's Your Profile</h1>
+            <div class = "show_profile_bank">
+                <div class = profilepic_bank>
+                    <img src="{% static 'images/bank_icon.png' %}" width="100px">
+                </div>
+
+                <div class = "details-bank">
+                    <p id="name-bank">{{user.name}}</p>
+                    <p id="email-bank">{{user.email}}</p>
+                    <p id="city-bank">{{user.city}}</p>
+                    <p id="address-bank">{{user.address}}</p>
+                </div>
+
+                <div class = "edit-profile-bank">
+                    <a href="/for_profile/edit_profile"> Edit here</a>
+                </div>
+            </div>
+        </div>
+    </main>
+                    
+    {% endif %}
+    
+</body>
+</html>
